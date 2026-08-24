@@ -15,6 +15,24 @@ LINEクリエイターズスタンプで **整備士向けニッチ / クリプ�
 | 04 | [参入時の問題](docs/04-entry-risks.md) | 審査・権利 / 発見性 / 収益 / 運用・法務 の4系統に分類した障壁と対策 |
 | 05 | [仕様とチェックリスト](docs/05-specs-and-checklist.md) | 画像仕様、必要なもの、申請前チェックリスト、90日ロードマップ |
 
+## 制作物
+
+| ディレクトリ | 内容 |
+|---|---|
+| [content/](content/) | セリフリスト（制作仕様書）。整備士セット1（現場）・セット2（敬語）各40個、権利チェックとタグ案つき |
+| [tools/](tools/) | `check_stickers.py` — 申請前に画像仕様を機械チェックする（標準ライブラリのみ／Pillow不要） |
+
+```bash
+# 画像チェック（静止画）
+python3 tools/check_stickers.py stickers/set01/
+
+# 動くスタンプ（320x270以内 / 5〜20フレーム / 4秒以内 の APNG 検査）
+python3 tools/check_stickers.py stickers/set01/ --animation
+
+# ツール自体のテスト
+python3 -m unittest discover -s tools -p 'test_*.py'
+```
+
 ## 結論（要約）
 
 1. **最大の障壁は「作れないこと」ではなく「1,500万セットの中で発見されないこと」。**
