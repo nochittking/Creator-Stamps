@@ -153,48 +153,82 @@ footer a{color:var(--tech)}
 a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 </style>
 
-<!-- ===== SVG 定義（キャラクター本体） ===== -->
+<!-- ===== SVG 定義（キャラクター本体 v2） ===== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <!-- 顔のベース：目と口を含まない。表情は上から重ねる -->
-    <symbol id="head" viewBox="0 0 140 140">
+    <symbol id="head" viewBox="0 0 160 160">
       <g stroke="var(--line)" stroke-linejoin="round" stroke-linecap="round">
-        <path d="M38 50 L46 12 L74 38 Z" fill="var(--fur-d)"/>
-        <path d="M102 50 L94 12 L66 38 Z" fill="var(--fur-d)"/>
-        <circle cx="70" cy="74" r="44" fill="var(--fur)"/>
-        <ellipse cx="70" cy="94" rx="27" ry="19" fill="var(--cream)"/>
-        <ellipse cx="36" cy="92" rx="9" ry="5.5" fill="var(--blush)" stroke="none"/>
-        <ellipse cx="104" cy="92" rx="9" ry="5.5" fill="var(--blush)" stroke="none"/>
-        <path d="M28 60 A 44 44 0 0 1 112 60 Z" fill="var(--cap)"/>
-        <rect x="24" y="54" width="92" height="13" rx="6.5" fill="var(--cap-d)"/>
-        <path d="M113 60 q26 -1 24 9 q-1 6 -24 4 z" fill="var(--cap-d)"/>
-        <ellipse cx="70" cy="85" rx="7.5" ry="6" fill="var(--line)" stroke="none"/>
+        <!-- 耳（頭より先に描いて、付け根を頭で隠す） -->
+        <path d="M60,36 C50,15 27,8 19,21 C11,35 24,54 43,53 Z" fill="var(--fur-d)"/>
+        <path d="M100,36 C110,15 133,8 141,21 C149,35 136,54 117,53 Z" fill="var(--fur-d)"/>
+        <path d="M54,38 C47,26 33,22 28,29 C23,37 31,48 42,47 Z" fill="var(--blush)" stroke="none" opacity=".55"/>
+        <path d="M106,38 C113,26 127,22 132,29 C137,37 129,48 118,47 Z" fill="var(--blush)" stroke="none" opacity=".55"/>
+        <!-- 輪郭：正円にせず、頬を張らせて顎を細く -->
+        <path d="M80,20 C110,20 131,38 132,64 C133,94 112,126 80,126 C48,126 27,94 28,64 C29,38 50,20 80,20 Z" fill="var(--fur)"/>
+        <!-- マズルは小さく。鼻先を前に出さない -->
+        <ellipse cx="80" cy="110" rx="25" ry="14" fill="var(--cream)"/>
+        <ellipse cx="36" cy="103" rx="9.5" ry="5.5" fill="var(--blush)" stroke="none"/>
+        <ellipse cx="124" cy="103" rx="9.5" ry="5.5" fill="var(--blush)" stroke="none"/>
+        <!-- キャップ：クラウン＋鍔。目の高さまで下げない -->
+        <path d="M30,58 C30,26 52,10 80,10 C108,10 130,26 130,58 Z" fill="var(--cap)"/>
+        <path d="M31,50 C48,58 112,58 129,50 L129,58 C112,64 48,64 31,58 Z" fill="var(--cap-d)" stroke="none"/>
+        <path d="M22,58 C22,52 31,50 44,52 C62,55 98,55 116,52 C129,50 138,52 138,58 C138,67 116,73 80,73 C44,73 22,67 22,58 Z" fill="var(--cap-d)"/>
+        <!-- 鼻 -->
+        <path d="M80,98 C86,98 89,101 88,104 C87,108 83,110 80,110 C77,110 73,108 72,104 C71,101 74,98 80,98 Z" fill="var(--line)" stroke="none"/>
       </g>
     </symbol>
 
-    <!-- 全身 -->
-    <symbol id="body" viewBox="0 0 200 280">
-      <g stroke="var(--line)" stroke-linejoin="round" stroke-linecap="round">
-        <rect x="74" y="184" width="25" height="64" rx="11" fill="var(--suit-d)"/>
-        <rect x="101" y="184" width="25" height="64" rx="11" fill="var(--suit-d)"/>
-        <ellipse cx="82" cy="252" rx="20" ry="11" fill="var(--line)"/>
-        <ellipse cx="118" cy="252" rx="20" ry="11" fill="var(--line)"/>
-        <path d="M68 116 q32 -9 64 0 l8 74 q-40 12 -80 0 z" fill="var(--suit)"/>
-        <rect x="44" y="124" width="24" height="54" rx="12" fill="var(--suit)" transform="rotate(-11 56 151)"/>
-        <rect x="132" y="124" width="24" height="54" rx="12" fill="var(--suit)" transform="rotate(11 144 151)"/>
-        <circle cx="48" cy="182" r="12.5" fill="var(--cream)"/>
-        <circle cx="152" cy="182" r="12.5" fill="var(--cream)"/>
-        <rect x="110" y="136" width="21" height="17" rx="3.5" fill="var(--suit-d)"/>
-        <path d="M100 128 v58" fill="none" stroke-width="2.4"/>
-        <path d="M86 116 l14 13 l14 -13" fill="none" stroke-width="2.8"/>
+    <!-- 全身：つなぎは肩から足首まで一続きの一枚もの -->
+    <symbol id="body" viewBox="0 0 220 320">
+      <!-- 腕：太いストロークを二重に引いて、丸みのある一本の腕にする -->
+      <g fill="none" stroke-linecap="round">
+        <path d="M74,142 C56,156 44,180 44,200" stroke="var(--line)" stroke-width="33"/>
+        <path d="M146,142 C164,156 176,180 176,200" stroke="var(--line)" stroke-width="33"/>
+        <path d="M74,142 C56,156 44,180 44,200" stroke="var(--suit)" stroke-width="26"/>
+        <path d="M146,142 C164,156 176,180 176,200" stroke="var(--suit)" stroke-width="26"/>
       </g>
-      <use href="#head" x="30" y="0" width="140" height="140"/>
       <g stroke="var(--line)" stroke-linejoin="round" stroke-linecap="round">
-        <circle cx="82" cy="74" r="7" fill="var(--line)"/>
-        <circle cx="118" cy="74" r="7" fill="var(--line)"/>
-        <circle cx="84.6" cy="71.4" r="2.4" fill="#fff" stroke="none"/>
-        <circle cx="120.6" cy="71.4" r="2.4" fill="#fff" stroke="none"/>
-        <path d="M100 91 v5 M100 96 q-8 8 -14 1 M100 96 q8 8 14 1" fill="none" stroke-width="3"/>
+        <!-- 長靴 -->
+        <path d="M84,278 L108,278 L108,296 C108,301 104,303 98,303 L74,303 C68,303 66,299 68,294 C71,286 76,278 84,278 Z" fill="var(--line)"/>
+        <path d="M136,278 L112,278 L112,296 C112,301 116,303 122,303 L146,303 C152,303 154,299 152,294 C149,286 144,278 136,278 Z" fill="var(--line)"/>
+        <!-- つなぎ本体：肩→脇→脚→股→脚→脇 を一本のパスで囲う -->
+        <path d="M66,146 C66,126 86,116 110,116 C134,116 154,126 154,146
+                 L157,204 L153,220 L149,274 C149,283 141,286 133,286
+                 L124,286 C117,286 116,280 116,274 L113,232
+                 C112,226 108,226 107,232 L104,274 C104,280 102,286 96,286
+                 L87,286 C79,286 71,283 71,274 L67,220 L63,204 Z" fill="var(--suit)"/>
+        <!-- 膝当て -->
+        <rect x="78" y="236" width="24" height="26" rx="9" fill="var(--suit-d)" stroke="none" opacity=".65"/>
+        <rect x="118" y="236" width="24" height="26" rx="9" fill="var(--suit-d)" stroke="none" opacity=".65"/>
+        <!-- 胸ポケットとネームパッチ -->
+        <rect x="76" y="150" width="27" height="23" rx="4" fill="var(--suit-d)" stroke-width="2.4"/>
+        <rect x="121" y="152" width="32" height="16" rx="8" fill="var(--cream)" stroke-width="2.4"/>
+        <path d="M128,157 h18 M128,163 h12" stroke="var(--suit-d)" stroke-width="2"/>
+        <!-- 襟・前立て・腰の切り替え（つなぎの記号） -->
+        <path d="M95,120 L110,135 L125,120" fill="none" stroke-width="3.2"/>
+        <path d="M110,135 L110,206" fill="none" stroke-width="2.8"/>
+        <path d="M64,208 L156,208" fill="none" stroke-width="3.4"/>
+        <path d="M88,203 v10 M132,203 v10" fill="none" stroke-width="2.6"/>
+        <!-- 袖口・裾のカフス -->
+        <path d="M33,199 L55,203 M187,199 L165,203" fill="none" stroke-width="3"/>
+        <path d="M74,270 L106,270 M114,270 L148,270" fill="none" stroke-width="3"/>
+        <path d="M70,296 L106,296 M114,296 L150,296" fill="none" stroke-width="2.6"/>
+        <!-- 手：親指のあるミトン -->
+        <path d="M31,208 C24,206 21,213 25,217 C28,220 32,218 32,214 Z" fill="var(--cream)" stroke-width="2.8"/>
+        <path d="M189,208 C196,206 199,213 195,217 C192,220 188,218 188,214 Z" fill="var(--cream)" stroke-width="2.8"/>
+        <path d="M30,208 C30,198 42,193 51,199 C57,203 58,214 53,221 C47,228 34,226 31,218 C30,215 29,211 30,208 Z" fill="var(--cream)"/>
+        <path d="M190,208 C190,198 178,193 169,199 C163,203 162,214 167,221 C173,228 186,226 189,218 C190,215 191,211 190,208 Z" fill="var(--cream)"/>
+      </g>
+      <use href="#head" x="30" y="0" width="160" height="160"/>
+      <g stroke="var(--line)" stroke-linejoin="round" stroke-linecap="round">
+        <ellipse cx="87" cy="90" rx="11.5" ry="12" fill="var(--line)"/>
+        <ellipse cx="133" cy="90" rx="11.5" ry="12" fill="var(--line)"/>
+        <circle cx="83" cy="85" r="4.6" fill="#fff" stroke="none"/>
+        <circle cx="129" cy="85" r="4.6" fill="#fff" stroke="none"/>
+        <circle cx="91" cy="96" r="2.2" fill="#fff" stroke="none" opacity=".8"/>
+        <circle cx="137" cy="96" r="2.2" fill="#fff" stroke="none" opacity=".8"/>
+        <path d="M110,110 v4 M110,114 C106,119 100,119 97,115 M110,114 C114,119 120,119 123,115" fill="none" stroke-width="3.2"/>
       </g>
     </symbol>
   </defs>
@@ -207,10 +241,10 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-of
   <h1>メカシバ 設定シート</h1>
   <p class="sub">整備士向けスタンプ全シリーズで共有する主人公の仕様。400点を同じキャラで描き切るために、頭身・線幅・配色・表情の型をここで固定する。</p>
   <div class="meta">
-    <span>REV <b>1.0 確定</b></span>
+    <span>REV <b>2.0</b></span>
     <span>対象 <b>セット 01 – 08</b></span>
     <span>出力 <b>370 × 320 px / PNG 透過</b></span>
-    <span>状態 <b>作画着手可</b></span>
+    <span>状態 <b>絵柄は再検討中</b></span>
   </div>
 </header>
 
@@ -218,18 +252,20 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-of
 <section class="plate">
   <header><span class="code">PLATE 01</span><h2>基本形とプロポーション<span class="en">PROPORTIONS</span></h2></header>
   <div class="inner">
-    <p class="note">頭を大きく取るのは可愛さのためではなく、<b>トーク画面で縮小表示されたときに表情が判別できる</b>ようにするため。全身は主にメイン画像とタブ画像で使い、40個のスタンプ本体は上半身〜バストアップを基本とする。</p>
+    <p class="note">つなぎは <b>肩から足首まで一続きの一枚もの</b>として、輪郭を一本のパスで囲う。上下が分かれて見えた時点でつなぎではなくなる。腰の切り替え線・胸当てポケット・ネームパッチ・裾のカフスが、それをつなぎだと読ませる記号。</p>
     <div class="split">
       <div class="board" style="display:grid;place-items:center;padding:18px">
-        <svg viewBox="0 0 300 290" style="width:100%;height:auto;max-width:300px" role="img" aria-label="つなぎとキャップを着た柴犬のキャラクター全身図。頭が大きい2.5頭身。">
-          <use href="#body" x="42" y="5" width="200" height="280" stroke-width="4.2"/>
+        <svg viewBox="0 0 320 320" style="width:100%;height:auto;max-width:320px" role="img" aria-label="つなぎとキャップを着た柴犬のキャラクター全身図">
+          <use href="#body" x="50" y="0" width="220" height="320" stroke-width="5"/>
           <g stroke="var(--tech)" stroke-width="1.2" fill="none" font-family="IBM Plex Mono, monospace" font-size="10">
-            <path d="M28 21 h12 M28 122 h12 M34 21 v101"/>
-            <path d="M31 25 l3 -4 l3 4 M31 118 l3 4 l3 -4" fill="var(--tech)" stroke="none"/>
-            <text x="12" y="76" fill="var(--tech)" text-anchor="middle" transform="rotate(-90 12 76)">HEAD 1.0</text>
-            <path d="M266 21 h12 M266 270 h12 M272 21 v249"/>
-            <path d="M269 25 l3 -4 l3 4 M269 266 l3 4 l3 -4" fill="var(--tech)" stroke="none"/>
-            <text x="290" y="145" fill="var(--tech)" text-anchor="middle" transform="rotate(90 290 145)">TOTAL 2.5</text>
+            <path d="M28 8 h12 M28 126 h12 M34 8 v118"/>
+            <path d="M31 12 l3 -4 l3 4 M31 122 l3 4 l3 -4" fill="var(--tech)" stroke="none"/>
+            <text x="14" y="67" fill="var(--tech)" text-anchor="middle" transform="rotate(-90 14 67)">HEAD 1.0</text>
+            <path d="M282 8 h12 M282 303 h12 M288 8 v295"/>
+            <path d="M285 12 l3 -4 l3 4 M285 299 l3 4 l3 -4" fill="var(--tech)" stroke="none"/>
+            <text x="306" y="156" fill="var(--tech)" text-anchor="middle" transform="rotate(90 306 156)">TOTAL 2.5</text>
+            <path d="M62 208 h-24" stroke-dasharray="4 3" opacity=".7"/>
+            <text x="36" y="204" fill="var(--tech)" text-anchor="middle">WAIST</text>
           </g>
         </svg>
       </div>
@@ -238,12 +274,14 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-of
           <thead><tr><th>項目</th><th>仕様</th><th>理由</th></tr></thead>
           <tbody>
             <tr><td><b>頭身</b></td><td><code>1 : 2.5</code></td><td>縮小時に表情が残る最小限</td></tr>
-            <tr><td><b>モチーフ</b></td><td>柴犬のデフォルメ</td><td>動物なら人種・性別の限定が起きない</td></tr>
-            <tr><td><b>服</b></td><td>つなぎ＋キャップ</td><td>一目で整備士と分かる最短の記号</td></tr>
-            <tr><td><b>顔の面積</b></td><td>画面の <code>45%</code> 以上</td><td>92px 表示でも目と口が読める</td></tr>
-            <tr><td><b>目の位置</b></td><td>顔の中心よりやや下</td><td>幼く見せて親しみを出す</td></tr>
-            <tr><td><b>手</b></td><td>指を描かない丸手</td><td>作画コストを 400点分そぎ落とす</td></tr>
-            <tr><td><b>基本構図</b></td><td>バストアップ正面</td><td>左右反転で使い回せる</td></tr>
+            <tr><td><b>頭の輪郭</b></td><td>正円にしない</td><td>頬を張らせ顎を細くする。正円は無表情に見える</td></tr>
+            <tr><td><b>目の大きさ</b></td><td>顔幅の <code>1/5</code> 前後</td><td>大きいほど幼く見える。可愛さの主因</td></tr>
+            <tr><td><b>目の高さ</b></td><td>顔の<b>中心より下</b></td><td>上に置くと大人びて可愛くなくなる</td></tr>
+            <tr><td><b>マズル</b></td><td>小さく、顔に埋める</td><td>大きいと鼻先が前に出て犬の写実に寄る</td></tr>
+            <tr><td><b>服</b></td><td>つなぎ（一枚もの）</td><td>肩から足首まで輪郭を切らない</td></tr>
+            <tr><td><b>手</b></td><td>親指のあるミトン</td><td>丸だけでは手に見えない</td></tr>
+            <tr><td><b>腕</b></td><td>先細りの曲線</td><td>直線の二重線は棒に見える</td></tr>
+            <tr><td><b>足元</b></td><td>安全靴（長靴型）</td><td>楕円では靴に見えない</td></tr>
           </tbody>
         </table>
       </div>
@@ -255,104 +293,103 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-of
 <section class="plate">
   <header><span class="code">PLATE 02</span><h2>表情パターン<span class="en">EXPRESSIONS</span></h2></header>
   <div class="inner">
-    <p class="note">この 9 種で、確定済みのセリフ 120 個をほぼ賄える。<b>眉を描かず、目と口の形だけで感情を出す</b>のがこのキャラの原則 — キャップの鍔で眉の位置が隠れるため、眉に頼る設計は破綻する。</p>
+    <p class="note">この 9 種で、確定済みのセリフ 120 個をほぼ賄える。<b>目は大きく、顔の中心より下に置く。</b>ここが可愛さのほぼ全て。眉は描かない — キャップの鍔で眉の位置が隠れるため、目と口の形だけで感情を作る。</p>
     <div class="faces">
-
       <figure class="face">
-        <svg viewBox="0 0 140 140" role="img" aria-label="基本の笑顔"><use href="#head" width="140" height="140" stroke-width="4.2"/>
-          <g stroke="var(--line)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="52" cy="74" r="7" fill="var(--line)"/><circle cx="88" cy="74" r="7" fill="var(--line)"/>
-            <circle cx="54.6" cy="71.4" r="2.4" fill="#fff" stroke="none"/><circle cx="90.6" cy="71.4" r="2.4" fill="#fff" stroke="none"/>
-            <path d="M70 91 v5 M70 96 q-8 8 -14 1 M70 96 q8 8 14 1" fill="none" stroke-width="3"/>
+        <svg viewBox="0 0 160 160" role="img" aria-label="基本の笑顔"><use href="#head" width="160" height="160" stroke-width="4.5"/>
+          <g stroke="var(--line)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="57" cy="90" rx="11.5" ry="12" fill="var(--line)"/><ellipse cx="103" cy="90" rx="11.5" ry="12" fill="var(--line)"/>
+     <circle cx="53" cy="85" r="4.6" fill="#fff" stroke="none"/><circle cx="99" cy="85" r="4.6" fill="#fff" stroke="none"/>
+     <circle cx="61" cy="96" r="2.2" fill="#fff" stroke="none" opacity=".8"/><circle cx="107" cy="96" r="2.2" fill="#fff" stroke="none" opacity=".8"/>
+     <path d="M80,110 v4 M80,114 C76,119 70,119 67,115 M80,114 C84,119 90,119 93,115" fill="none" stroke-width="3.2"/>
           </g></svg>
         <figcaption>基本・笑顔<span class="use">おねがい！ / ありがと〜！</span></figcaption>
       </figure>
 
       <figure class="face">
-        <svg viewBox="0 0 140 140" role="img" aria-label="得意げな顔"><use href="#head" width="140" height="140" stroke-width="4.2"/>
-          <g stroke="var(--line)" stroke-width="4" fill="none" stroke-linecap="round">
-            <path d="M44 77 q8 -11 16 0"/><path d="M80 77 q8 -11 16 0"/>
-            <path d="M58 96 q13 9 25 -3" stroke-width="3.4"/>
-            <path d="M120 44 v14 M113 51 h14" stroke="var(--cap-d)" stroke-width="3.4"/>
+        <svg viewBox="0 0 160 160" role="img" aria-label="得意げな顔"><use href="#head" width="160" height="160" stroke-width="4.5"/>
+          <g stroke="var(--line)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M45,94 C51,80 63,80 69,94" fill="none" stroke-width="5"/><path d="M91,94 C97,80 109,80 115,94" fill="none" stroke-width="5"/>
+     <path d="M64,112 C74,124 92,122 100,109" fill="none" stroke-width="3.6"/>
+     <path d="M136,58 v14 M129,65 h14" fill="none" stroke="var(--cap-d)" stroke-width="3.6"/>
           </g></svg>
         <figcaption>ドヤ<span class="use">まかせて！ / 納車しますっ！</span></figcaption>
       </figure>
 
       <figure class="face">
-        <svg viewBox="0 0 140 140" role="img" aria-label="困った顔"><use href="#head" width="140" height="140" stroke-width="4.2"/>
-          <g stroke="var(--line)" stroke-width="4" fill="none" stroke-linecap="round">
-            <path d="M44 72 q8 8 16 3"/><path d="M96 72 q-8 8 -16 3"/>
-            <path d="M60 99 q6 -6 11 0 q5 6 10 0" stroke-width="3.2"/>
-            <path d="M116 60 q7 10 0 15 q-7 -5 0 -15z" fill="var(--tear)" stroke-width="2.4"/>
+        <svg viewBox="0 0 160 160" role="img" aria-label="困った顔"><use href="#head" width="160" height="160" stroke-width="4.5"/>
+          <g stroke="var(--line)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M45,86 C51,97 63,97 69,89" fill="none" stroke-width="4.6"/><path d="M115,86 C109,97 97,97 91,89" fill="none" stroke-width="4.6"/>
+     <path d="M66,116 C71,110 76,120 81,114 C86,108 91,118 96,113" fill="none" stroke-width="3.2"/>
+     <path d="M133,74 C140,85 133,94 128,89 C124,85 128,79 133,74 Z" fill="var(--tear)" stroke-width="2.4"/>
           </g></svg>
         <figcaption>困り・汗<span class="use">いま手が離せない！ / ごめん！</span></figcaption>
       </figure>
 
       <figure class="face">
-        <svg viewBox="0 0 140 140" role="img" aria-label="泣き笑いの顔"><use href="#head" width="140" height="140" stroke-width="4.2"/>
-          <g stroke="var(--line)" stroke-width="4" fill="none" stroke-linecap="round">
-            <path d="M44 76 q8 -11 16 0"/><path d="M80 76 q8 -11 16 0"/>
-            <path d="M50 80 q-3 12 2 18" stroke="var(--tear)" stroke-width="4.5"/>
-            <path d="M90 80 q3 12 -2 18" stroke="var(--tear)" stroke-width="4.5"/>
-            <ellipse cx="70" cy="99" rx="12" ry="9" fill="var(--line)" stroke-width="3"/>
+        <svg viewBox="0 0 160 160" role="img" aria-label="泣き笑いの顔"><use href="#head" width="160" height="160" stroke-width="4.5"/>
+          <g stroke="var(--line)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M45,92 C51,78 63,78 69,92" fill="none" stroke-width="5"/><path d="M91,92 C97,78 109,78 115,92" fill="none" stroke-width="5"/>
+     <path d="M55,96 C50,110 52,122 57,128" fill="none" stroke="var(--tear)" stroke-width="6"/>
+     <path d="M105,96 C110,110 108,122 103,128" fill="none" stroke="var(--tear)" stroke-width="6"/>
+     <ellipse cx="80" cy="117" rx="15" ry="10" fill="var(--line)" stroke-width="3"/>
           </g></svg>
         <figcaption>泣き笑い<span class="use">明日までに何とか😂</span></figcaption>
       </figure>
 
       <figure class="face">
-        <svg viewBox="0 0 140 140" role="img" aria-label="驚いた顔"><use href="#head" width="140" height="140" stroke-width="4.2"/>
-          <g stroke="var(--line)" stroke-width="4" stroke-linecap="round">
-            <circle cx="52" cy="74" r="10" fill="#fff"/><circle cx="88" cy="74" r="10" fill="#fff"/>
-            <circle cx="52" cy="75" r="4.6" fill="var(--line)" stroke="none"/><circle cx="88" cy="75" r="4.6" fill="var(--line)" stroke="none"/>
-            <ellipse cx="70" cy="99" rx="6" ry="7" fill="var(--line)" stroke-width="2.6"/>
+        <svg viewBox="0 0 160 160" role="img" aria-label="驚いた顔"><use href="#head" width="160" height="160" stroke-width="4.5"/>
+          <g stroke="var(--line)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="57" cy="88" r="14" fill="#fff" stroke-width="4"/><circle cx="103" cy="88" r="14" fill="#fff" stroke-width="4"/>
+     <circle cx="57" cy="90" r="6.5" fill="var(--line)" stroke="none"/><circle cx="103" cy="90" r="6.5" fill="var(--line)" stroke="none"/>
+     <ellipse cx="80" cy="116" rx="6.5" ry="8.5" fill="var(--line)" stroke-width="2.6"/>
           </g></svg>
         <figcaption>驚き<span class="use">えっ / うそでしょ</span></figcaption>
       </figure>
 
       <figure class="face">
-        <svg viewBox="0 0 140 140" role="img" aria-label="疲れた顔"><use href="#head" width="140" height="140" stroke-width="4.2"/>
-          <g stroke="var(--line)" stroke-width="4" fill="none" stroke-linecap="round">
-            <path d="M43 73 h17"/><path d="M80 73 h17"/>
-            <path d="M46 79 q6 5 12 1"/><path d="M82 79 q6 5 12 1" opacity=".85"/>
-            <path d="M60 100 q10 -6 20 0" stroke-width="3.2"/>
-            <path d="M18 66 v13 M26 62 v17" stroke="#8A8A82" stroke-width="3" opacity=".8"/>
+        <svg viewBox="0 0 160 160" role="img" aria-label="疲れた顔"><use href="#head" width="160" height="160" stroke-width="4.5"/>
+          <g stroke="var(--line)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M45,88 h24" fill="none" stroke-width="5.5"/><path d="M91,88 h24" fill="none" stroke-width="5.5"/>
+     <path d="M48,95 C54,100 62,100 67,95" fill="none" stroke-width="3.4" opacity=".85"/>
+     <path d="M93,95 C99,100 107,100 112,95" fill="none" stroke-width="3.4" opacity=".85"/>
+     <path d="M67,118 C75,111 85,111 93,118" fill="none" stroke-width="3.2"/>
+     <path d="M16,78 v14 M24,74 v18" fill="none" stroke="#8A8A82" stroke-width="3" opacity=".8"/>
           </g></svg>
         <figcaption>疲弊<span class="use">今日残業確定 / 部品まちー</span></figcaption>
       </figure>
 
       <figure class="face">
-        <svg viewBox="0 0 140 140" role="img" aria-label="叫んでいる顔"><use href="#head" width="140" height="140" stroke-width="4.2"/>
-          <g stroke="var(--line)" stroke-width="4.2" fill="none" stroke-linecap="round">
-            <path d="M44 68 l16 10 M60 68 l-16 10"/><path d="M80 68 l16 10 M96 68 l-16 10"/>
-            <path d="M56 94 q14 -5 28 0 q-4 18 -14 18 q-10 0 -14 -18z" fill="var(--line)" stroke-width="3"/>
-            <path d="M64 108 q6 -6 12 0" stroke="var(--blush)" stroke-width="4"/>
+        <svg viewBox="0 0 160 160" role="img" aria-label="叫んでいる顔"><use href="#head" width="160" height="160" stroke-width="4.5"/>
+          <g stroke="var(--line)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M46,82 L68,95 M68,82 L46,95" fill="none" stroke-width="4.6"/><path d="M92,82 L114,95 M114,82 L92,95" fill="none" stroke-width="4.6"/>
+     <path d="M62,106 C72,100 88,100 98,106 C96,126 88,132 80,132 C72,132 64,126 62,106 Z" fill="var(--line)" stroke-width="3"/>
+     <path d="M71,122 C76,129 86,129 90,122" fill="var(--blush)" stroke-width="2.4"/>
           </g></svg>
         <figcaption>叫び・拒否<span class="use">ムリ〜！ / だれか代わって！</span></figcaption>
       </figure>
 
       <figure class="face">
-        <svg viewBox="0 0 140 140" role="img" aria-label="眠そうな顔"><use href="#head" width="140" height="140" stroke-width="4.2"/>
-          <g stroke="var(--line)" stroke-width="4" fill="none" stroke-linecap="round">
-            <path d="M44 74 q8 8 16 0"/><path d="M80 74 q8 8 16 0"/>
-            <ellipse cx="70" cy="100" rx="5" ry="6" fill="var(--line)" stroke-width="2.4"/>
-            <g stroke="#8A8A82" stroke-width="2.6" font-family="IBM Plex Mono, monospace">
-              <text x="112" y="40" fill="#8A8A82" font-size="15" stroke="none">z</text>
-              <text x="122" y="27" fill="#8A8A82" font-size="11" stroke="none">z</text>
-            </g>
+        <svg viewBox="0 0 160 160" role="img" aria-label="眠そうな顔"><use href="#head" width="160" height="160" stroke-width="4.5"/>
+          <g stroke="var(--line)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M45,88 C51,98 63,98 69,88" fill="none" stroke-width="5"/><path d="M91,88 C97,98 109,98 115,88" fill="none" stroke-width="5"/>
+     <ellipse cx="80" cy="116" rx="5" ry="6.5" fill="var(--line)" stroke-width="2.4"/>
+     <text x="128" y="46" fill="#8A8A82" stroke="none" font-size="17" font-family="IBM Plex Mono, monospace">z</text>
+     <text x="140" y="32" fill="#8A8A82" stroke="none" font-size="12" font-family="IBM Plex Mono, monospace">z</text>
           </g></svg>
         <figcaption>眠い<span class="use">おつかれ〜！ / あとでいい？</span></figcaption>
       </figure>
 
       <figure class="face">
-        <svg viewBox="0 0 140 140" role="img" aria-label="ジト目"><use href="#head" width="140" height="140" stroke-width="4.2"/>
-          <g stroke="var(--line)" stroke-width="4" stroke-linecap="round">
-            <circle cx="52" cy="76" r="7" fill="var(--line)"/><circle cx="88" cy="76" r="7" fill="var(--line)"/>
-            <path d="M43 72 h18 M79 72 h18" fill="none" stroke-width="5"/>
-            <path d="M60 100 h20" fill="none" stroke-width="3.4"/>
+        <svg viewBox="0 0 160 160" role="img" aria-label="ジト目"><use href="#head" width="160" height="160" stroke-width="4.5"/>
+          <g stroke="var(--line)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="57" cy="92" rx="11.5" ry="12" fill="var(--line)"/><ellipse cx="103" cy="92" rx="11.5" ry="12" fill="var(--line)"/>
+     <rect x="43" y="74" width="28" height="12" fill="var(--fur)" stroke="none"/><rect x="89" y="74" width="28" height="12" fill="var(--fur)" stroke="none"/>
+     <path d="M44,86 h26" fill="none" stroke-width="4.5"/><path d="M90,86 h26" fill="none" stroke-width="4.5"/>
+     <path d="M68,116 h24" fill="none" stroke-width="3.4"/>
           </g></svg>
         <figcaption>ジト目<span class="use">まだ？？ / それ誰がやる？</span></figcaption>
       </figure>
-
     </div>
   </div>
 </section>
@@ -406,46 +443,39 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-of
     <p class="note">左が入稿サイズ、中央がトーク画面でのおおよその表示、右がスタンプ選択パネルでのサムネイル。<b>いちばん右で意味が判別できなければ、その構図は不合格。</b>作画のたびにこの 3 サイズで並べて確認する。</p>
     <div class="scale">
       <figure>
-        <div class="s370">
-          <svg viewBox="0 0 370 320" role="img" aria-label="「まかせて！」のスタンプ完成イメージ">
-            <rect width="370" height="320" fill="none"/>
-            <circle cx="185" cy="168" r="140" fill="#FFE3B0"/>
-            <use href="#body" x="95" y="34" width="180" height="252" stroke-width="7.8"/>
-            <g font-family="'Zen Kaku Gothic New','BIZ UDPGothic',sans-serif" font-weight="900" font-size="60" text-anchor="middle">
-              <text x="185" y="300" fill="none" stroke="#fff" stroke-width="14" stroke-linejoin="round">まかせて！</text>
-              <text x="185" y="300" fill="none" stroke="#2A2724" stroke-width="6" stroke-linejoin="round">まかせて！</text>
-              <text x="185" y="300" fill="#FF6B35">まかせて！</text>
+        <div class="s370"><svg viewBox="0 0 370 320" role="img" aria-label="「まかせて！」のスタンプ完成イメージ">
+            <circle cx="185" cy="150" r="142" fill="#FFE3B0"/>
+            <use href="#body" x="97" y="6" width="176" height="256" stroke-width="10"/>
+            <g font-family="'Zen Kaku Gothic New','BIZ UDPGothic',sans-serif" font-weight="900" font-size="58" text-anchor="middle">
+              <text x="185" y="298" fill="none" stroke="#fff" stroke-width="15" stroke-linejoin="round">まかせて！</text>
+              <text x="185" y="298" fill="none" stroke="#2A2724" stroke-width="6" stroke-linejoin="round">まかせて！</text>
+              <text x="185" y="298" fill="#FF6B35">まかせて！</text>
             </g>
-          </svg>
-        </div>
+          </svg></div>
         <figcaption>370 × 320 — 入稿</figcaption>
       </figure>
       <figure>
-        <div class="s92">
-          <svg viewBox="0 0 370 320" role="img" aria-label="トーク画面での表示サイズ">
-            <circle cx="185" cy="168" r="140" fill="#FFE3B0"/>
-            <use href="#body" x="95" y="34" width="180" height="252" stroke-width="7.8"/>
-            <g font-family="'Zen Kaku Gothic New','BIZ UDPGothic',sans-serif" font-weight="900" font-size="60" text-anchor="middle">
-              <text x="185" y="300" fill="none" stroke="#fff" stroke-width="14" stroke-linejoin="round">まかせて！</text>
-              <text x="185" y="300" fill="none" stroke="#2A2724" stroke-width="6" stroke-linejoin="round">まかせて！</text>
-              <text x="185" y="300" fill="#FF6B35">まかせて！</text>
+        <div class="s92"><svg viewBox="0 0 370 320" role="img" aria-label="トーク画面での表示サイズ">
+            <circle cx="185" cy="150" r="142" fill="#FFE3B0"/>
+            <use href="#body" x="97" y="6" width="176" height="256" stroke-width="10"/>
+            <g font-family="'Zen Kaku Gothic New','BIZ UDPGothic',sans-serif" font-weight="900" font-size="58" text-anchor="middle">
+              <text x="185" y="298" fill="none" stroke="#fff" stroke-width="15" stroke-linejoin="round">まかせて！</text>
+              <text x="185" y="298" fill="none" stroke="#2A2724" stroke-width="6" stroke-linejoin="round">まかせて！</text>
+              <text x="185" y="298" fill="#FF6B35">まかせて！</text>
             </g>
-          </svg>
-        </div>
+          </svg></div>
         <figcaption>約 92 px — トーク</figcaption>
       </figure>
       <figure>
-        <div class="s58">
-          <svg viewBox="0 0 370 320" role="img" aria-label="サムネイルでの表示サイズ">
-            <circle cx="185" cy="168" r="140" fill="#FFE3B0"/>
-            <use href="#body" x="95" y="34" width="180" height="252" stroke-width="7.8"/>
-            <g font-family="'Zen Kaku Gothic New','BIZ UDPGothic',sans-serif" font-weight="900" font-size="60" text-anchor="middle">
-              <text x="185" y="300" fill="none" stroke="#fff" stroke-width="14" stroke-linejoin="round">まかせて！</text>
-              <text x="185" y="300" fill="none" stroke="#2A2724" stroke-width="6" stroke-linejoin="round">まかせて！</text>
-              <text x="185" y="300" fill="#FF6B35">まかせて！</text>
+        <div class="s58"><svg viewBox="0 0 370 320" role="img" aria-label="サムネイルでの表示サイズ">
+            <circle cx="185" cy="150" r="142" fill="#FFE3B0"/>
+            <use href="#body" x="97" y="6" width="176" height="256" stroke-width="10"/>
+            <g font-family="'Zen Kaku Gothic New','BIZ UDPGothic',sans-serif" font-weight="900" font-size="58" text-anchor="middle">
+              <text x="185" y="298" fill="none" stroke="#fff" stroke-width="15" stroke-linejoin="round">まかせて！</text>
+              <text x="185" y="298" fill="none" stroke="#2A2724" stroke-width="6" stroke-linejoin="round">まかせて！</text>
+              <text x="185" y="298" fill="#FF6B35">まかせて！</text>
             </g>
-          </svg>
-        </div>
+          </svg></div>
         <figcaption>約 58 px — 一覧</figcaption>
       </figure>
     </div>
@@ -513,8 +543,20 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-of
         <tbody>
           <tr><td><b>名前</b></td><td>メカシバ</td><td>スタンプのタイトルは <code>メカシバ／整備士のスタンプ 会話編</code> の形にし、検索語「整備士」を必ず残す</td></tr>
           <tr><td><b>モチーフ</b></td><td>柴犬</td><td>耳の形だけで正面から犬と判別できる。動物なので人種・性別の限定が起きない</td></tr>
-          <tr><td><b>絵柄の方向</b></td><td>この設定シートの通り</td><td>ただし本制作では線の入り抜き・塗りのムラなど手描きの質感を足す</td></tr>
+          <tr><td><b>絵柄の方向</b></td><td><b>再検討中</b></td><td>REV 1.0 は却下。REV 2.0 は構造上の欠陥を直した二案目で、これも確定ではない</td></tr>
           <tr><td><b>頭身・配色・線幅</b></td><td>PLATE 01・03・04 の通り</td><td>色は 8 色で打ち止め。増やさないことがシリーズ性の担保</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:500;margin:28px 0 12px">REV 2.0 で直したこと</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>REV 1.0 の失敗</th><th>原因</th><th>REV 2.0 の対処</th></tr></thead>
+        <tbody>
+          <tr><td>服がつなぎに見えない</td><td>胴・腕・脚を別々の図形で作った</td><td>肩から足首まで輪郭を一本のパスで囲い、腰の切り替え線・胸当て・ネームパッチ・裾のカフスを入れた</td></tr>
+          <tr><td>手足が丸印、腕脚が二重線</td><td>円と長方形を回転させただけ</td><td>手は親指のあるミトン、腕は先細りの曲線、足元は長靴型の安全靴</td></tr>
+          <tr><td>顔が可愛くない</td><td>目が小さく・高く・離れすぎ。マズルが大きく鼻先が前に出た</td><td>目を大きくして顔の中心より下へ。マズルを小さくして顔に埋めた</td></tr>
+          <tr><td>全体のバランスが悪い</td><td>頭が正円で輪郭に抑揚がない</td><td>頬を張らせ顎を細くした輪郭に変更。耳も付け根から生やした</td></tr>
         </tbody>
       </table>
     </div>
