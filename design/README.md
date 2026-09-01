@@ -3,10 +3,15 @@
 **[character-sheet.html](character-sheet.html)** — 整備士スタンプ全シリーズで共有する
 主人公「メカシバ」の制作仕様書。頭身・表情・配色・線幅を固定している。
 
-**[text-sticker-specimens.html](text-sticker-specimens.html)** — **現行の主軸。**
+**[text-sticker-specimens2.html](text-sticker-specimens2.html)** — **現行の主軸（vol.2）。**
+癖のある書体12種、枠を使わないレタリング6種、工具・車モチーフとその添え方。
+四角い枠に文字を流し込む vol.1 をやめ、**文字そのものを形にする**方向に組み直したもの。
+公開版: https://claude.ai/code/artifact/5297adb2-d861-40e3-8fa3-f6a2236d569d
+（`generate_specimens2.py` が全37枚のSVGを生成する）
+
+**[text-sticker-specimens.html](text-sticker-specimens.html)** — vol.1（配色・世界観の5方向）。
 文字スタンプ 5方向の試作見本。実際の書体・実寸で組んであり、可読性テストとシリーズ構成案つき。
 公開版: https://claude.ai/code/artifact/76909693-99cd-40e7-9790-6cf063b5202c
-（`generate_specimens.py` が各スタンプのSVGを生成する）
 
 **[illustrator-brief.md](illustrator-brief.md)** — 絵そのものを外注／画像生成で作るための発注仕様。
 設定シートのSVGは仕様を固定する用途のもので、**「可愛い」を作るのには向かない**（REV 1.0 却下の原因）。

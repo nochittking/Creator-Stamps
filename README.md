@@ -21,7 +21,7 @@ LINEクリエイターズスタンプで **整備士向けニッチ / クリプ�
 |---|---|
 | [content/](content/) | セリフリスト（制作仕様書）。**文字スタンプ用の文言候補161個**と、整備士セット1〜3（各40個）。権利チェックとタグ案つき |
 | [tools/](tools/) | `check_stickers.py` — 申請前に画像仕様を機械チェックする（標準ライブラリのみ／Pillow不要） |
-| [design/](design/) | **文字スタンプ5方向の見本帳**（[公開版](https://claude.ai/code/artifact/76909693-99cd-40e7-9790-6cf063b5202c)）。ほかにキャラクター設定シートと作画ブリーフ（[公開版](https://claude.ai/code/artifact/6f3980f9-1a3b-4f25-b31f-13f40eb60e23)）。**現在は保留中** — 文字主体の方針に切り替えたため |
+| [design/](design/) | **造形見本 vol.2**（[公開版](https://claude.ai/code/artifact/5297adb2-d861-40e3-8fa3-f6a2236d569d)）— 書体12種・枠なしレタリング・工具/車モチーフ。ほか vol.1 の[配色見本](https://claude.ai/code/artifact/76909693-99cd-40e7-9790-6cf063b5202c)、ほかにキャラクター設定シートと作画ブリーフ（[公開版](https://claude.ai/code/artifact/6f3980f9-1a3b-4f25-b31f-13f40eb60e23)）。**現在は保留中** — 文字主体の方針に切り替えたため |
 
 ```bash
 # 画像チェック（静止画）
