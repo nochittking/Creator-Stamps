@@ -1,7 +1,12 @@
-# design/ — キャラクター設定シート
+# design/ — デザイン資料
 
 **[character-sheet.html](character-sheet.html)** — 整備士スタンプ全シリーズで共有する
 主人公「メカシバ」の制作仕様書。頭身・表情・配色・線幅を固定している。
+
+**[text-sticker-specimens.html](text-sticker-specimens.html)** — **現行の主軸。**
+文字スタンプ 5方向の試作見本。実際の書体・実寸で組んであり、可読性テストとシリーズ構成案つき。
+公開版: https://claude.ai/code/artifact/76909693-99cd-40e7-9790-6cf063b5202c
+（`generate_specimens.py` が各スタンプのSVGを生成する）
 
 **[illustrator-brief.md](illustrator-brief.md)** — 絵そのものを外注／画像生成で作るための発注仕様。
 設定シートのSVGは仕様を固定する用途のもので、**「可愛い」を作るのには向かない**（REV 1.0 却下の原因）。

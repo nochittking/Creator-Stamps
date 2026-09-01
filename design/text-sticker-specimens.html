@@ -1,0 +1,519 @@
+<title>整備士スタンプ 見本帳</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=IBM+Plex+Mono:wght@400;500&family=Dela+Gothic+One&family=Noto+Sans+JP:wght@700;900&family=Noto+Serif+JP:wght@600;900&family=Yusei+Magic&family=Zen+Maru+Gothic:wght@700;900&display=swap">
+<style>
+:root{
+  --paper:#F1F1EF; --surface:#FAFAF8; --sunk:#E6E6E2;
+  --ink:#191918; --body:#333331; --muted:#6E6E69; --rule:#D3D3CD; --rule-soft:#E2E2DC;
+  --chat:#7F93A6; --chat-bubble:#FFFFFF; --chat-mine:#8DE05B;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#121212; --surface:#1B1B1A; --sunk:#0D0D0D;
+    --ink:#EDEDE9; --body:#C7C7C1; --muted:#8F8F89; --rule:#2C2C2A; --rule-soft:#232322;
+    --chat:#3E4A55; --chat-bubble:#2A2A28;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121212; --surface:#1B1B1A; --sunk:#0D0D0D;
+  --ink:#EDEDE9; --body:#C7C7C1; --muted:#8F8F89; --rule:#2C2C2A; --rule-soft:#232322;
+  --chat:#3E4A55; --chat-bubble:#2A2A28;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--body);
+  font-family:"BIZ UDPGothic","Hiragino Sans",sans-serif;font-size:15px;line-height:1.85;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:1020px;margin:0 auto;padding:0 20px 96px}
+.masthead{padding:56px 0 28px;border-bottom:2px solid var(--ink)}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--muted)}
+h1{font-size:clamp(32px,5.5vw,50px);line-height:1.12;letter-spacing:.04em;font-weight:700;
+  margin:.3em 0 .2em;color:var(--ink)}
+.sub{color:var(--muted);max-width:64ch;margin:0}
+.plate{margin-top:40px;border:1px solid var(--rule);background:var(--surface)}
+.plate>header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding:14px 20px;
+  border-bottom:1px solid var(--rule);background:var(--sunk)}
+.code{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;letter-spacing:.16em;
+  color:var(--ink);background:var(--ink);color:var(--surface);padding:3px 9px;white-space:nowrap}
+.plate h2{font-size:19px;margin:0;color:var(--ink);letter-spacing:.03em}
+.plate h2 .en{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:400;
+  color:var(--muted);letter-spacing:.13em;margin-left:11px}
+.inner{padding:22px 20px}
+.pitch{margin:0 0 20px;color:var(--body);max-width:70ch}
+.samples{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+.st{background:var(--sunk);border:1px solid var(--rule-soft)}
+.st svg{display:block;width:100%;height:auto}
+.spec{display:grid;grid-template-columns:max-content 1fr;gap:6px 18px;margin:22px 0 0;
+  font-size:13.5px;border-top:1px solid var(--rule-soft);padding-top:16px}
+.spec dt{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--muted);padding-top:5px;white-space:nowrap}
+.spec dd{margin:0;color:var(--body)}
+.spec dd b{color:var(--ink)}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:12.5px}
+.row{padding:18px 0;border-bottom:1px solid var(--rule-soft)}
+.row:last-child{border-bottom:0}
+.rowlabel{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.13em;
+  color:var(--muted);margin-bottom:12px}
+.sizes{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-end}
+.sizes figure{margin:0}
+.sizes figcaption{margin-top:8px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  color:var(--muted);letter-spacing:.05em}
+.sizes svg{display:block;width:100%;height:auto;border:1px solid var(--rule)}
+.talk{background:var(--chat);padding:22px 16px;display:flex;flex-direction:column;gap:14px;
+  max-width:420px;border:1px solid var(--rule)}
+.msg{display:flex;gap:9px;align-items:flex-end}
+.msg.me{flex-direction:row-reverse}
+.who{width:30px;height:30px;border-radius:50%;background:#D8D5CC;flex:none;
+  font-family:"IBM Plex Mono",monospace;font-size:11px;color:#55524A;display:grid;place-items:center}
+.bub{background:var(--chat-bubble);color:#22201C;border-radius:14px;padding:7px 12px;font-size:13.5px;
+  max-width:62%}
+.msg.me .bub{background:var(--chat-mine);color:#1D2A14}
+.stk{width:112px;flex:none}
+.stk svg{display:block;width:100%;height:auto}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:13.5px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+thead th{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--rule);font-weight:500;
+  white-space:nowrap}
+td b{color:var(--ink)}
+.pick{background:var(--ink);color:var(--surface);font-family:"IBM Plex Mono",monospace;
+  font-size:10px;letter-spacing:.1em;padding:2px 7px;white-space:nowrap}
+.note{font-size:13.5px;color:var(--muted);margin:0 0 18px;max-width:72ch}
+.warn{border-left:3px solid var(--ink);padding:2px 0 2px 18px;margin:20px 0 0}
+.warn p{margin:0 0 8px;font-size:13.5px} .warn p:last-child{margin:0}
+footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--muted)}
+footer a{color:var(--ink)}
+a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <pattern id="hazard" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+    <rect width="22" height="22" fill="#FFD200"/><rect width="11" height="22" fill="#141210"/>
+  </pattern>
+</defs></svg>
+
+<div class="wrap">
+<header class="masthead">
+  <div class="eyebrow">Type Specimen / 整備業界あるある 文字スタンプ</div>
+  <h1>整備士スタンプ 見本帳</h1>
+  <p class="sub">文字だけで組んだ 5 方向の試作。実際の書体・実寸で並べてあるので、絞り込みとシリーズ構成の判断材料にしてほしい。文言はすべて候補リスト 161 個から採っている。</p>
+</header>
+
+<section class="plate">
+  <header>
+    <span class="code">PATTERN A</span>
+    <h2>現場の黒板<span class="en">GENBA BLACK</span></h2>
+  </header>
+  <div class="inner">
+    <p class="pitch">黒地に白抜きの極太。トーク画面（白地）で最も目立ち、最小サイズでも潰れない。</p>
+    <div class="samples">
+        <div class="st"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="10" y="18" width="350" height="284" rx="20" fill="#1A1A1A"/>
+      <rect x="24" y="32" width="322" height="256" rx="10" fill="none" stroke="#55534C" stroke-width="2.5" stroke-dasharray="7 7"/>
+      <text x="185" y="160.0" text-anchor="middle" dominant-baseline="central" font-family="'Dela Gothic One', sans-serif" font-weight="400" font-size="112" fill="#F7F5EE" letter-spacing="0" >無理</text></svg></div>
+        <div class="st"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="10" y="18" width="350" height="284" rx="20" fill="#1A1A1A"/>
+      <rect x="24" y="32" width="322" height="256" rx="10" fill="none" stroke="#55534C" stroke-width="2.5" stroke-dasharray="7 7"/>
+      <text x="185" y="111.0" text-anchor="middle" dominant-baseline="central" font-family="'Dela Gothic One', sans-serif" font-weight="400" font-size="86.0" fill="#F7F5EE" letter-spacing="0" >納期</text>
+      <text x="185" y="209.0" text-anchor="middle" dominant-baseline="central" font-family="'Dela Gothic One', sans-serif" font-weight="400" font-size="86.0" fill="#FFD400" letter-spacing="0" >未定</text></svg></div>
+        <div class="st"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="10" y="18" width="350" height="284" rx="20" fill="#1A1A1A"/>
+      <rect x="24" y="32" width="322" height="256" rx="10" fill="none" stroke="#55534C" stroke-width="2.5" stroke-dasharray="7 7"/>
+      <text x="185" y="117.5" text-anchor="middle" dominant-baseline="central" font-family="'Dela Gothic One', sans-serif" font-weight="400" font-size="74.5" fill="#F7F5EE" letter-spacing="0" >入庫</text>
+      <text x="185" y="202.5" text-anchor="middle" dominant-baseline="central" font-family="'Dela Gothic One', sans-serif" font-weight="400" font-size="74.5" fill="#F7F5EE" letter-spacing="0" >しました</text></svg></div>
+        <div class="st"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="10" y="18" width="350" height="284" rx="20" fill="#1A1A1A"/>
+      <rect x="24" y="32" width="322" height="256" rx="10" fill="none" stroke="#55534C" stroke-width="2.5" stroke-dasharray="7 7"/>
+      <text x="185" y="160.0" text-anchor="middle" dominant-baseline="central" font-family="'Dela Gothic One', sans-serif" font-weight="400" font-size="112" fill="#F7F5EE" letter-spacing="0" >了解</text></svg></div>
+    </div>
+    <dl class="spec">
+      <dt>書体</dt><dd>Dela Gothic One（極太ディスプレイ）</dd>
+      <dt>配色</dt><dd class="mono">鉄板黒 #1A1A1A ／ 白 #F7F5EE ／ 注意黄 #FFD400</dd>
+      <dt>向く文言</dt><dd>断定・叫び・業務連絡 — 無理 / 納期未定 / 入庫しました</dd>
+      <dt>ターゲット</dt><dd>男性整備士。職場グループでの業務連絡が主戦場</dd>
+      <dt>評価</dt><dd>5案中で<b>可読性が最強</b>。ただし全40個を黒にすると重い印象になる</dd>
+    </dl>
+  </div>
+</section>
+
+<section class="plate">
+  <header>
+    <span class="code">PATTERN B</span>
+    <h2>安全標識<span class="en">SAFETY SIGN</span></h2>
+  </header>
+  <div class="inner">
+    <p class="pitch">工場の注意喚起サインを借りる。業界の記号なので、読む前に意味が伝わる。</p>
+    <div class="samples">
+        <div class="st"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="10" y="22" width="350" height="276" rx="10" fill="#FFD200" stroke="#141210" stroke-width="11"/>
+      <rect x="22" y="34" width="326" height="26" fill="url(#hazard)"/>
+      <rect x="22" y="260" width="326" height="26" fill="url(#hazard)"/>
+      <text x="185" y="160.0" text-anchor="middle" dominant-baseline="central" font-family="'Noto Sans JP', sans-serif" font-weight="900" font-size="74.5" fill="#141210" letter-spacing="0" >締めすぎ</text></svg></div>
+        <div class="st"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="10" y="22" width="350" height="276" rx="10" fill="#FFD200" stroke="#141210" stroke-width="11"/>
+      <rect x="22" y="34" width="326" height="26" fill="url(#hazard)"/>
+      <rect x="22" y="260" width="326" height="26" fill="url(#hazard)"/>
+      <text x="185" y="126.0" text-anchor="middle" dominant-baseline="central" font-family="'Noto Sans JP', sans-serif" font-weight="900" font-size="59.6" fill="#141210" letter-spacing="0" >タイヤ</text>
+      <text x="185" y="194.0" text-anchor="middle" dominant-baseline="central" font-family="'Noto Sans JP', sans-serif" font-weight="900" font-size="59.6" fill="#141210" letter-spacing="0" >終わってる</text></svg></div>
+        <div class="st"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="10" y="22" width="350" height="276" rx="10" fill="#FFD200" stroke="#141210" stroke-width="11"/>
+      <rect x="22" y="34" width="326" height="26" fill="url(#hazard)"/>
+      <rect x="22" y="260" width="326" height="26" fill="url(#hazard)"/>
+      <text x="185" y="126.0" text-anchor="middle" dominant-baseline="central" font-family="'Noto Sans JP', sans-serif" font-weight="900" font-size="59.6" fill="#141210" letter-spacing="0" >車検</text>
+      <text x="185" y="194.0" text-anchor="middle" dominant-baseline="central" font-family="'Noto Sans JP', sans-serif" font-weight="900" font-size="59.6" fill="#141210" letter-spacing="0" >通りません</text></svg></div>
+        <div class="st"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="10" y="22" width="350" height="276" rx="10" fill="#FFD200" stroke="#141210" stroke-width="11"/>
+      <rect x="22" y="34" width="326" height="26" fill="url(#hazard)"/>
+      <rect x="22" y="260" width="326" height="26" fill="url(#hazard)"/>
+      <text x="185" y="160.0" text-anchor="middle" dominant-baseline="central" font-family="'Noto Sans JP', sans-serif" font-weight="900" font-size="100" fill="#141210" letter-spacing="0" >危険</text></svg></div>
+    </div>
+    <dl class="spec">
+      <dt>書体</dt><dd>Noto Sans JP 900（角の立ったゴシック）</dd>
+      <dt>配色</dt><dd class="mono">標識黄 #FFD200 ／ 黒 #141210</dd>
+      <dt>向く文言</dt><dd>注意喚起・強い断り — 締めすぎ / タイヤ終わってる / 車検通りません</dd>
+      <dt>ターゲット</dt><dd>工場全般。整備士以外の現場職にも通じる</dd>
+      <dt>評価</dt><dd>強いぶん<b>多用すると疲れる</b>。40個中 3〜5個の差し色として使うのが合う</dd>
+    </dl>
+  </div>
+</section>
+
+<section class="plate">
+  <header>
+    <span class="code">PATTERN C</span>
+    <h2>油染み・かすれ<span class="en">OIL STAIN</span></h2>
+  </header>
+  <div class="inner">
+    <p class="pitch">くたびれた手書きと油の染み。共感と自虐の温度をそのまま版面にする。</p>
+    <div class="samples">
+        <div class="st"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="8" y="16" width="354" height="288" rx="26" fill="#EDE7DC"/>
+      <ellipse cx="86" cy="72" rx="52" ry="34" fill="#2B2622" opacity=".075" transform="rotate(-18 86 72)"/>
+      <ellipse cx="296" cy="248" rx="60" ry="38" fill="#2B2622" opacity=".07" transform="rotate(12 296 248)"/>
+      <ellipse cx="304" cy="70" rx="22" ry="15" fill="#2B2622" opacity=".06" transform="rotate(-30 304 70)"/>
+      <ellipse cx="70" cy="252" rx="26" ry="17" fill="#2B2622" opacity=".055" transform="rotate(24 70 252)"/>
+      <text x="185" y="117.5" text-anchor="middle" dominant-baseline="central" font-family="'Yusei Magic', sans-serif" font-weight="400" font-size="74.5" fill="#2B2622" letter-spacing="0" >今日</text>
+      <text x="185" y="202.5" text-anchor="middle" dominant-baseline="central" font-family="'Yusei Magic', sans-serif" font-weight="400" font-size="74.5" fill="#2B2622" letter-spacing="0" >残業確定</text></svg></div>
+        <div class="st"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="8" y="16" width="354" height="288" rx="26" fill="#EDE7DC"/>
+      <ellipse cx="86" cy="72" rx="52" ry="34" fill="#2B2622" opacity=".075" transform="rotate(-18 86 72)"/>
+      <ellipse cx="296" cy="248" rx="60" ry="38" fill="#2B2622" opacity=".07" transform="rotate(12 296 248)"/>
+      <ellipse cx="304" cy="70" rx="22" ry="15" fill="#2B2622" opacity=".06" transform="rotate(-30 304 70)"/>
+      <ellipse cx="70" cy="252" rx="26" ry="17" fill="#2B2622" opacity=".055" transform="rotate(24 70 252)"/>
+      <text x="185" y="111.0" text-anchor="middle" dominant-baseline="central" font-family="'Yusei Magic', sans-serif" font-weight="400" font-size="86.0" fill="#2B2622" letter-spacing="0" >手が油</text>
+      <text x="185" y="209.0" text-anchor="middle" dominant-baseline="central" font-family="'Yusei Magic', sans-serif" font-weight="400" font-size="86.0" fill="#2B2622" letter-spacing="0" >まみれ</text></svg></div>
+        <div class="st"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="8" y="16" width="354" height="288" rx="26" fill="#EDE7DC"/>
+      <ellipse cx="86" cy="72" rx="52" ry="34" fill="#2B2622" opacity=".075" transform="rotate(-18 86 72)"/>
+      <ellipse cx="296" cy="248" rx="60" ry="38" fill="#2B2622" opacity=".07" transform="rotate(12 296 248)"/>
+      <ellipse cx="304" cy="70" rx="22" ry="15" fill="#2B2622" opacity=".06" transform="rotate(-30 304 70)"/>
+      <ellipse cx="70" cy="252" rx="26" ry="17" fill="#2B2622" opacity=".055" transform="rotate(24 70 252)"/>
+      <text x="185" y="160.0" text-anchor="middle" dominant-baseline="central" font-family="'Yusei Magic', sans-serif" font-weight="400" font-size="74.5" fill="#2B2622" letter-spacing="0" >わからん</text></svg></div>
+        <div class="st"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="8" y="16" width="354" height="288" rx="26" fill="#EDE7DC"/>
+      <ellipse cx="86" cy="72" rx="52" ry="34" fill="#2B2622" opacity=".075" transform="rotate(-18 86 72)"/>
+      <ellipse cx="296" cy="248" rx="60" ry="38" fill="#2B2622" opacity=".07" transform="rotate(12 296 248)"/>
+      <ellipse cx="304" cy="70" rx="22" ry="15" fill="#2B2622" opacity=".06" transform="rotate(-30 304 70)"/>
+      <ellipse cx="70" cy="252" rx="26" ry="17" fill="#2B2622" opacity=".055" transform="rotate(24 70 252)"/>
+      <text x="185" y="160.0" text-anchor="middle" dominant-baseline="central" font-family="'Yusei Magic', sans-serif" font-weight="400" font-size="49.7" fill="#2B2622" letter-spacing="0" >まだ帰れない</text></svg></div>
+    </div>
+    <dl class="spec">
+      <dt>書体</dt><dd>Yusei Magic（手書きマーカー）</dd>
+      <dt>配色</dt><dd class="mono">生成り #EDE7DC ／ 油墨 #2B2622</dd>
+      <dt>向く文言</dt><dd>疲弊・自虐・共感 — 今日残業確定 / 手が油まみれ / わからん</dd>
+      <dt>ターゲット</dt><dd>整備士本人。<b>購買のトリガーになるカテゴリ G と完全に対応</b></dd>
+      <dt>評価</dt><dd>SNSで最も拡散しやすい。ただし<b>最小サイズでの可読性は5案中で最弱</b></dd>
+    </dl>
+  </div>
+</section>
+
+<section class="plate">
+  <header>
+    <span class="code">PATTERN D</span>
+    <h2>整備伝票<span class="en">WORK ORDER</span></h2>
+  </header>
+  <div class="inner">
+    <p class="pitch">作業指示書の紙をそのまま持ち込む。業界のリアルな道具立てで、他業種に模倣されにくい。</p>
+    <div class="samples">
+        <div class="st"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="14" y="14" width="342" height="292" rx="5" fill="#FBFAF5" stroke="#BFBAAA" stroke-width="3"/>
+      <rect x="14" y="14" width="342" height="34" fill="#E9E5D8"/>
+      <text x="30" y="32" dominant-baseline="central" font-family="'BIZ UDPGothic', sans-serif" font-size="15" fill="#7A7566" letter-spacing="3">作業指示書</text>
+      <circle cx="330" cy="31" r="5.5" fill="#D8D3C2"/><circle cx="312" cy="31" r="5.5" fill="#D8D3C2"/>
+      <g stroke="#DAD5C4" stroke-width="2">
+        <path d="M30 232 h310"/><path d="M30 258 h310"/><path d="M30 284 h310"/>
+      </g>
+      <g transform="rotate(-13 300 76)" opacity=".88">
+        <circle cx="300" cy="76" r="34" fill="none" stroke="#C0392B" stroke-width="4"/>
+        <text x="300" y="77" text-anchor="middle" dominant-baseline="central" font-family="'Noto Serif JP', serif" font-weight="900" font-size="26" fill="#C0392B">承認</text>
+      </g>
+      <text x="185" y="129.5" text-anchor="middle" dominant-baseline="central" font-family="'BIZ UDPGothic', sans-serif" font-weight="700" font-size="74.5" fill="#22201C" letter-spacing="0" >見積</text>
+      <text x="185" y="214.5" text-anchor="middle" dominant-baseline="central" font-family="'BIZ UDPGothic', sans-serif" font-weight="700" font-size="74.5" fill="#22201C" letter-spacing="0" >出します</text></svg></div>
+        <div class="st"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="14" y="14" width="342" height="292" rx="5" fill="#FBFAF5" stroke="#BFBAAA" stroke-width="3"/>
+      <rect x="14" y="14" width="342" height="34" fill="#E9E5D8"/>
+      <text x="30" y="32" dominant-baseline="central" font-family="'BIZ UDPGothic', sans-serif" font-size="15" fill="#7A7566" letter-spacing="3">作業指示書</text>
+      <circle cx="330" cy="31" r="5.5" fill="#D8D3C2"/><circle cx="312" cy="31" r="5.5" fill="#D8D3C2"/>
+      <g stroke="#DAD5C4" stroke-width="2">
+        <path d="M30 232 h310"/><path d="M30 258 h310"/><path d="M30 284 h310"/>
+      </g>
+      
+      <text x="185" y="143.7" text-anchor="middle" dominant-baseline="central" font-family="'BIZ UDPGothic', sans-serif" font-weight="700" font-size="49.7" fill="#22201C" letter-spacing="0" >部品</text>
+      <text x="185" y="200.3" text-anchor="middle" dominant-baseline="central" font-family="'BIZ UDPGothic', sans-serif" font-weight="700" font-size="49.7" fill="#22201C" letter-spacing="0" >発注しました</text></svg></div>
+        <div class="st"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="14" y="14" width="342" height="292" rx="5" fill="#FBFAF5" stroke="#BFBAAA" stroke-width="3"/>
+      <rect x="14" y="14" width="342" height="34" fill="#E9E5D8"/>
+      <text x="30" y="32" dominant-baseline="central" font-family="'BIZ UDPGothic', sans-serif" font-size="15" fill="#7A7566" letter-spacing="3">作業指示書</text>
+      <circle cx="330" cy="31" r="5.5" fill="#D8D3C2"/><circle cx="312" cy="31" r="5.5" fill="#D8D3C2"/>
+      <g stroke="#DAD5C4" stroke-width="2">
+        <path d="M30 232 h310"/><path d="M30 258 h310"/><path d="M30 284 h310"/>
+      </g>
+      <g transform="rotate(-13 300 76)" opacity=".88">
+        <circle cx="300" cy="76" r="34" fill="none" stroke="#C0392B" stroke-width="4"/>
+        <text x="300" y="77" text-anchor="middle" dominant-baseline="central" font-family="'Noto Serif JP', serif" font-weight="900" font-size="26" fill="#C0392B">済</text>
+      </g>
+      <text x="185" y="123.0" text-anchor="middle" dominant-baseline="central" font-family="'BIZ UDPGothic', sans-serif" font-weight="700" font-size="86.0" fill="#22201C" letter-spacing="0" >車検</text>
+      <text x="185" y="221.0" text-anchor="middle" dominant-baseline="central" font-family="'BIZ UDPGothic', sans-serif" font-weight="700" font-size="86.0" fill="#22201C" letter-spacing="0" >完了</text></svg></div>
+        <div class="st"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="14" y="14" width="342" height="292" rx="5" fill="#FBFAF5" stroke="#BFBAAA" stroke-width="3"/>
+      <rect x="14" y="14" width="342" height="34" fill="#E9E5D8"/>
+      <text x="30" y="32" dominant-baseline="central" font-family="'BIZ UDPGothic', sans-serif" font-size="15" fill="#7A7566" letter-spacing="3">作業指示書</text>
+      <circle cx="330" cy="31" r="5.5" fill="#D8D3C2"/><circle cx="312" cy="31" r="5.5" fill="#D8D3C2"/>
+      <g stroke="#DAD5C4" stroke-width="2">
+        <path d="M30 232 h310"/><path d="M30 258 h310"/><path d="M30 284 h310"/>
+      </g>
+      
+      <text x="185" y="172.0" text-anchor="middle" dominant-baseline="central" font-family="'BIZ UDPGothic', sans-serif" font-weight="700" font-size="59.6" fill="#22201C" letter-spacing="0" >確認します</text></svg></div>
+    </div>
+    <dl class="spec">
+      <dt>書体</dt><dd>BIZ UDPGothic 700 ／ 判子は Noto Serif JP</dd>
+      <dt>配色</dt><dd class="mono">紙 #FBFAF5 ／ 罫 #DAD5C4 ／ 朱 #C0392B</dd>
+      <dt>向く文言</dt><dd>事務・進捗・接客 — 見積出します / 部品発注しました / 承認</dd>
+      <dt>ターゲット</dt><dd>フロント・事務。<b>整備士以外の社内メンバーにも売れる</b></dd>
+      <dt>評価</dt><dd>5案で<b>最もオリジナリティが高い</b>。文字が小さくなりがちなのが弱点</dd>
+    </dl>
+  </div>
+</section>
+
+<section class="plate">
+  <header>
+    <span class="code">PATTERN E</span>
+    <h2>ポップガレージ<span class="en">POP GARAGE</span></h2>
+  </header>
+  <div class="inner">
+    <p class="pitch">明るい丸ゴシックと原色。挨拶とリアクションを軽く投げられる。</p>
+    <div class="samples">
+        <div class="st"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="12" y="20" width="346" height="280" rx="60" fill="#FF6B35"/>
+      <rect x="12" y="20" width="346" height="280" rx="60" fill="none" stroke="#25211E" stroke-width="9"/>
+      <circle cx="60" cy="66" r="9" fill="#FFFFFF" opacity=".45"/>
+      <circle cx="86" cy="52" r="5" fill="#FFFFFF" opacity=".35"/>
+      <text x="185" y="160.0" text-anchor="middle" dominant-baseline="central" font-family="'Zen Maru Gothic', sans-serif" font-weight="900" font-size="59.6" fill="#FFFFFF" letter-spacing="0" paint-order="stroke fill" stroke="#25211E" stroke-width="7.7" stroke-linejoin="round">ありがとう</text></svg></div>
+        <div class="st"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="12" y="20" width="346" height="280" rx="60" fill="#17A2A2"/>
+      <rect x="12" y="20" width="346" height="280" rx="60" fill="none" stroke="#25211E" stroke-width="9"/>
+      <circle cx="60" cy="66" r="9" fill="#FFFFFF" opacity=".45"/>
+      <circle cx="86" cy="52" r="5" fill="#FFFFFF" opacity=".35"/>
+      <text x="185" y="160.0" text-anchor="middle" dominant-baseline="central" font-family="'Zen Maru Gothic', sans-serif" font-weight="900" font-size="110" fill="#FFFFFF" letter-spacing="0" paint-order="stroke fill" stroke="#25211E" stroke-width="14.3" stroke-linejoin="round">OK</text></svg></div>
+        <div class="st"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="12" y="20" width="346" height="280" rx="60" fill="#F5B301"/>
+      <rect x="12" y="20" width="346" height="280" rx="60" fill="none" stroke="#25211E" stroke-width="9"/>
+      <circle cx="60" cy="66" r="9" fill="#FFFFFF" opacity=".45"/>
+      <circle cx="86" cy="52" r="5" fill="#FFFFFF" opacity=".35"/>
+      <text x="185" y="111.0" text-anchor="middle" dominant-baseline="central" font-family="'Zen Maru Gothic', sans-serif" font-weight="900" font-size="86.0" fill="#FFFFFF" letter-spacing="0" paint-order="stroke fill" stroke="#25211E" stroke-width="11.2" stroke-linejoin="round">お疲れ</text>
+      <text x="185" y="209.0" text-anchor="middle" dominant-baseline="central" font-family="'Zen Maru Gothic', sans-serif" font-weight="900" font-size="86.0" fill="#FFFFFF" letter-spacing="0" paint-order="stroke fill" stroke="#25211E" stroke-width="11.2" stroke-linejoin="round">さま</text></svg></div>
+        <div class="st"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="12" y="20" width="346" height="280" rx="60" fill="#17A2A2"/>
+      <rect x="12" y="20" width="346" height="280" rx="60" fill="none" stroke="#25211E" stroke-width="9"/>
+      <circle cx="60" cy="66" r="9" fill="#FFFFFF" opacity=".45"/>
+      <circle cx="86" cy="52" r="5" fill="#FFFFFF" opacity=".35"/>
+      <text x="185" y="160.0" text-anchor="middle" dominant-baseline="central" font-family="'Zen Maru Gothic', sans-serif" font-weight="900" font-size="99.3" fill="#FFFFFF" letter-spacing="0" paint-order="stroke fill" stroke="#25211E" stroke-width="12.9" stroke-linejoin="round">助かる</text></svg></div>
+    </div>
+    <dl class="spec">
+      <dt>書体</dt><dd>Zen Maru Gothic 900（丸ゴシック）</dd>
+      <dt>配色</dt><dd class="mono">橙 #FF6B35 ／ 青緑 #17A2A2 ／ 黄 #F5B301 ／ 縁 #25211E</dd>
+      <dt>向く文言</dt><dd>挨拶・リアクション・軽い依頼 — ありがとう / OK / お疲れさま</dd>
+      <dt>ターゲット</dt><dd>若手・フロント。年齢層と性別を広く取れる</dd>
+      <dt>評価</dt><dd><b>汎用リアクション13個の受け皿に最適</b>。単体では整備士感が薄い</dd>
+    </dl>
+  </div>
+</section>
+
+<section class="plate">
+  <header><span class="code">TEST 01</span><h2>実寸での可読性<span class="en">LEGIBILITY</span></h2></header>
+  <div class="inner">
+    <p class="note">左が入稿サイズ、中央がトーク画面、右が一覧のサムネイル。<b>いちばん右で読めるかどうかが、そのまま採用可否になる。</b>ここで 5 案の差がはっきり出る。</p>
+    
+      <div class="row">
+        <div class="rowlabel">A 現場の黒板</div>
+        <div class="sizes">
+          <figure><div style="width:370px;max-width:100%"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="10" y="18" width="350" height="284" rx="20" fill="#1A1A1A"/>
+      <rect x="24" y="32" width="322" height="256" rx="10" fill="none" stroke="#55534C" stroke-width="2.5" stroke-dasharray="7 7"/>
+      <text x="185" y="111.0" text-anchor="middle" dominant-baseline="central" font-family="'Dela Gothic One', sans-serif" font-weight="400" font-size="86.0" fill="#F7F5EE" letter-spacing="0" >納期</text>
+      <text x="185" y="209.0" text-anchor="middle" dominant-baseline="central" font-family="'Dela Gothic One', sans-serif" font-weight="400" font-size="86.0" fill="#FFD400" letter-spacing="0" >未定</text></svg></div><figcaption>370 px 入稿</figcaption></figure>
+          <figure><div style="width:92px;max-width:100%"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="10" y="18" width="350" height="284" rx="20" fill="#1A1A1A"/>
+      <rect x="24" y="32" width="322" height="256" rx="10" fill="none" stroke="#55534C" stroke-width="2.5" stroke-dasharray="7 7"/>
+      <text x="185" y="111.0" text-anchor="middle" dominant-baseline="central" font-family="'Dela Gothic One', sans-serif" font-weight="400" font-size="86.0" fill="#F7F5EE" letter-spacing="0" >納期</text>
+      <text x="185" y="209.0" text-anchor="middle" dominant-baseline="central" font-family="'Dela Gothic One', sans-serif" font-weight="400" font-size="86.0" fill="#FFD400" letter-spacing="0" >未定</text></svg></div><figcaption>92 px トーク</figcaption></figure>
+          <figure><div style="width:58px;max-width:100%"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="10" y="18" width="350" height="284" rx="20" fill="#1A1A1A"/>
+      <rect x="24" y="32" width="322" height="256" rx="10" fill="none" stroke="#55534C" stroke-width="2.5" stroke-dasharray="7 7"/>
+      <text x="185" y="111.0" text-anchor="middle" dominant-baseline="central" font-family="'Dela Gothic One', sans-serif" font-weight="400" font-size="86.0" fill="#F7F5EE" letter-spacing="0" >納期</text>
+      <text x="185" y="209.0" text-anchor="middle" dominant-baseline="central" font-family="'Dela Gothic One', sans-serif" font-weight="400" font-size="86.0" fill="#FFD400" letter-spacing="0" >未定</text></svg></div><figcaption>58 px 一覧</figcaption></figure>
+        </div>
+      </div>
+      <div class="row">
+        <div class="rowlabel">C 油染み・かすれ</div>
+        <div class="sizes">
+          <figure><div style="width:370px;max-width:100%"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="8" y="16" width="354" height="288" rx="26" fill="#EDE7DC"/>
+      <ellipse cx="86" cy="72" rx="52" ry="34" fill="#2B2622" opacity=".075" transform="rotate(-18 86 72)"/>
+      <ellipse cx="296" cy="248" rx="60" ry="38" fill="#2B2622" opacity=".07" transform="rotate(12 296 248)"/>
+      <ellipse cx="304" cy="70" rx="22" ry="15" fill="#2B2622" opacity=".06" transform="rotate(-30 304 70)"/>
+      <ellipse cx="70" cy="252" rx="26" ry="17" fill="#2B2622" opacity=".055" transform="rotate(24 70 252)"/>
+      <text x="185" y="117.5" text-anchor="middle" dominant-baseline="central" font-family="'Yusei Magic', sans-serif" font-weight="400" font-size="74.5" fill="#2B2622" letter-spacing="0" >今日</text>
+      <text x="185" y="202.5" text-anchor="middle" dominant-baseline="central" font-family="'Yusei Magic', sans-serif" font-weight="400" font-size="74.5" fill="#2B2622" letter-spacing="0" >残業確定</text></svg></div><figcaption>370 px 入稿</figcaption></figure>
+          <figure><div style="width:92px;max-width:100%"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="8" y="16" width="354" height="288" rx="26" fill="#EDE7DC"/>
+      <ellipse cx="86" cy="72" rx="52" ry="34" fill="#2B2622" opacity=".075" transform="rotate(-18 86 72)"/>
+      <ellipse cx="296" cy="248" rx="60" ry="38" fill="#2B2622" opacity=".07" transform="rotate(12 296 248)"/>
+      <ellipse cx="304" cy="70" rx="22" ry="15" fill="#2B2622" opacity=".06" transform="rotate(-30 304 70)"/>
+      <ellipse cx="70" cy="252" rx="26" ry="17" fill="#2B2622" opacity=".055" transform="rotate(24 70 252)"/>
+      <text x="185" y="117.5" text-anchor="middle" dominant-baseline="central" font-family="'Yusei Magic', sans-serif" font-weight="400" font-size="74.5" fill="#2B2622" letter-spacing="0" >今日</text>
+      <text x="185" y="202.5" text-anchor="middle" dominant-baseline="central" font-family="'Yusei Magic', sans-serif" font-weight="400" font-size="74.5" fill="#2B2622" letter-spacing="0" >残業確定</text></svg></div><figcaption>92 px トーク</figcaption></figure>
+          <figure><div style="width:58px;max-width:100%"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="8" y="16" width="354" height="288" rx="26" fill="#EDE7DC"/>
+      <ellipse cx="86" cy="72" rx="52" ry="34" fill="#2B2622" opacity=".075" transform="rotate(-18 86 72)"/>
+      <ellipse cx="296" cy="248" rx="60" ry="38" fill="#2B2622" opacity=".07" transform="rotate(12 296 248)"/>
+      <ellipse cx="304" cy="70" rx="22" ry="15" fill="#2B2622" opacity=".06" transform="rotate(-30 304 70)"/>
+      <ellipse cx="70" cy="252" rx="26" ry="17" fill="#2B2622" opacity=".055" transform="rotate(24 70 252)"/>
+      <text x="185" y="117.5" text-anchor="middle" dominant-baseline="central" font-family="'Yusei Magic', sans-serif" font-weight="400" font-size="74.5" fill="#2B2622" letter-spacing="0" >今日</text>
+      <text x="185" y="202.5" text-anchor="middle" dominant-baseline="central" font-family="'Yusei Magic', sans-serif" font-weight="400" font-size="74.5" fill="#2B2622" letter-spacing="0" >残業確定</text></svg></div><figcaption>58 px 一覧</figcaption></figure>
+        </div>
+      </div>
+      <div class="row">
+        <div class="rowlabel">D 整備伝票</div>
+        <div class="sizes">
+          <figure><div style="width:370px;max-width:100%"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="14" y="14" width="342" height="292" rx="5" fill="#FBFAF5" stroke="#BFBAAA" stroke-width="3"/>
+      <rect x="14" y="14" width="342" height="34" fill="#E9E5D8"/>
+      <text x="30" y="32" dominant-baseline="central" font-family="'BIZ UDPGothic', sans-serif" font-size="15" fill="#7A7566" letter-spacing="3">作業指示書</text>
+      <circle cx="330" cy="31" r="5.5" fill="#D8D3C2"/><circle cx="312" cy="31" r="5.5" fill="#D8D3C2"/>
+      <g stroke="#DAD5C4" stroke-width="2">
+        <path d="M30 232 h310"/><path d="M30 258 h310"/><path d="M30 284 h310"/>
+      </g>
+      <g transform="rotate(-13 300 76)" opacity=".88">
+        <circle cx="300" cy="76" r="34" fill="none" stroke="#C0392B" stroke-width="4"/>
+        <text x="300" y="77" text-anchor="middle" dominant-baseline="central" font-family="'Noto Serif JP', serif" font-weight="900" font-size="26" fill="#C0392B">承認</text>
+      </g>
+      <text x="185" y="129.5" text-anchor="middle" dominant-baseline="central" font-family="'BIZ UDPGothic', sans-serif" font-weight="700" font-size="74.5" fill="#22201C" letter-spacing="0" >見積</text>
+      <text x="185" y="214.5" text-anchor="middle" dominant-baseline="central" font-family="'BIZ UDPGothic', sans-serif" font-weight="700" font-size="74.5" fill="#22201C" letter-spacing="0" >出します</text></svg></div><figcaption>370 px 入稿</figcaption></figure>
+          <figure><div style="width:92px;max-width:100%"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="14" y="14" width="342" height="292" rx="5" fill="#FBFAF5" stroke="#BFBAAA" stroke-width="3"/>
+      <rect x="14" y="14" width="342" height="34" fill="#E9E5D8"/>
+      <text x="30" y="32" dominant-baseline="central" font-family="'BIZ UDPGothic', sans-serif" font-size="15" fill="#7A7566" letter-spacing="3">作業指示書</text>
+      <circle cx="330" cy="31" r="5.5" fill="#D8D3C2"/><circle cx="312" cy="31" r="5.5" fill="#D8D3C2"/>
+      <g stroke="#DAD5C4" stroke-width="2">
+        <path d="M30 232 h310"/><path d="M30 258 h310"/><path d="M30 284 h310"/>
+      </g>
+      <g transform="rotate(-13 300 76)" opacity=".88">
+        <circle cx="300" cy="76" r="34" fill="none" stroke="#C0392B" stroke-width="4"/>
+        <text x="300" y="77" text-anchor="middle" dominant-baseline="central" font-family="'Noto Serif JP', serif" font-weight="900" font-size="26" fill="#C0392B">承認</text>
+      </g>
+      <text x="185" y="129.5" text-anchor="middle" dominant-baseline="central" font-family="'BIZ UDPGothic', sans-serif" font-weight="700" font-size="74.5" fill="#22201C" letter-spacing="0" >見積</text>
+      <text x="185" y="214.5" text-anchor="middle" dominant-baseline="central" font-family="'BIZ UDPGothic', sans-serif" font-weight="700" font-size="74.5" fill="#22201C" letter-spacing="0" >出します</text></svg></div><figcaption>92 px トーク</figcaption></figure>
+          <figure><div style="width:58px;max-width:100%"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="14" y="14" width="342" height="292" rx="5" fill="#FBFAF5" stroke="#BFBAAA" stroke-width="3"/>
+      <rect x="14" y="14" width="342" height="34" fill="#E9E5D8"/>
+      <text x="30" y="32" dominant-baseline="central" font-family="'BIZ UDPGothic', sans-serif" font-size="15" fill="#7A7566" letter-spacing="3">作業指示書</text>
+      <circle cx="330" cy="31" r="5.5" fill="#D8D3C2"/><circle cx="312" cy="31" r="5.5" fill="#D8D3C2"/>
+      <g stroke="#DAD5C4" stroke-width="2">
+        <path d="M30 232 h310"/><path d="M30 258 h310"/><path d="M30 284 h310"/>
+      </g>
+      <g transform="rotate(-13 300 76)" opacity=".88">
+        <circle cx="300" cy="76" r="34" fill="none" stroke="#C0392B" stroke-width="4"/>
+        <text x="300" y="77" text-anchor="middle" dominant-baseline="central" font-family="'Noto Serif JP', serif" font-weight="900" font-size="26" fill="#C0392B">承認</text>
+      </g>
+      <text x="185" y="129.5" text-anchor="middle" dominant-baseline="central" font-family="'BIZ UDPGothic', sans-serif" font-weight="700" font-size="74.5" fill="#22201C" letter-spacing="0" >見積</text>
+      <text x="185" y="214.5" text-anchor="middle" dominant-baseline="central" font-family="'BIZ UDPGothic', sans-serif" font-weight="700" font-size="74.5" fill="#22201C" letter-spacing="0" >出します</text></svg></div><figcaption>58 px 一覧</figcaption></figure>
+        </div>
+      </div>
+  </div>
+</section>
+
+<section class="plate">
+  <header><span class="code">TEST 02</span><h2>トーク画面での見え方<span class="en">IN CONTEXT</span></h2></header>
+  <div class="inner">
+    <p class="note">スタンプは単体ではなく<b>会話の流れの中で判断される</b>。黒（A）とポップ（E）を混ぜた場合の実際の見え方。</p>
+    <div class="talk">
+      <div class="msg"><div class="who">整</div><div class="stk"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="10" y="18" width="350" height="284" rx="20" fill="#1A1A1A"/>
+      <rect x="24" y="32" width="322" height="256" rx="10" fill="none" stroke="#55534C" stroke-width="2.5" stroke-dasharray="7 7"/>
+      <text x="185" y="117.5" text-anchor="middle" dominant-baseline="central" font-family="'Dela Gothic One', sans-serif" font-weight="400" font-size="74.5" fill="#F7F5EE" letter-spacing="0" >入庫</text>
+      <text x="185" y="202.5" text-anchor="middle" dominant-baseline="central" font-family="'Dela Gothic One', sans-serif" font-weight="400" font-size="74.5" fill="#F7F5EE" letter-spacing="0" >しました</text></svg></div></div>
+      <div class="msg me"><div class="stk"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="12" y="20" width="346" height="280" rx="60" fill="#17A2A2"/>
+      <rect x="12" y="20" width="346" height="280" rx="60" fill="none" stroke="#25211E" stroke-width="9"/>
+      <circle cx="60" cy="66" r="9" fill="#FFFFFF" opacity=".45"/>
+      <circle cx="86" cy="52" r="5" fill="#FFFFFF" opacity=".35"/>
+      <text x="185" y="160.0" text-anchor="middle" dominant-baseline="central" font-family="'Zen Maru Gothic', sans-serif" font-weight="900" font-size="110" fill="#FFFFFF" letter-spacing="0" paint-order="stroke fill" stroke="#25211E" stroke-width="14.3" stroke-linejoin="round">OK</text></svg></div></div>
+      <div class="msg"><div class="who">整</div><div class="bub">今日中に終わりそうにないです</div></div>
+      <div class="msg me"><div class="stk"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="12" y="20" width="346" height="280" rx="60" fill="#F5B301"/>
+      <rect x="12" y="20" width="346" height="280" rx="60" fill="none" stroke="#25211E" stroke-width="9"/>
+      <circle cx="60" cy="66" r="9" fill="#FFFFFF" opacity=".45"/>
+      <circle cx="86" cy="52" r="5" fill="#FFFFFF" opacity=".35"/>
+      <text x="185" y="111.0" text-anchor="middle" dominant-baseline="central" font-family="'Zen Maru Gothic', sans-serif" font-weight="900" font-size="86.0" fill="#FFFFFF" letter-spacing="0" paint-order="stroke fill" stroke="#25211E" stroke-width="11.2" stroke-linejoin="round">お疲れ</text>
+      <text x="185" y="209.0" text-anchor="middle" dominant-baseline="central" font-family="'Zen Maru Gothic', sans-serif" font-weight="900" font-size="86.0" fill="#FFFFFF" letter-spacing="0" paint-order="stroke fill" stroke="#25211E" stroke-width="11.2" stroke-linejoin="round">さま</text></svg></div></div>
+      <div class="msg"><div class="who">整</div><div class="stk"><svg viewBox="0 0 370 320" class="" role="img" aria-hidden="true"><rect x="8" y="16" width="354" height="288" rx="26" fill="#EDE7DC"/>
+      <ellipse cx="86" cy="72" rx="52" ry="34" fill="#2B2622" opacity=".075" transform="rotate(-18 86 72)"/>
+      <ellipse cx="296" cy="248" rx="60" ry="38" fill="#2B2622" opacity=".07" transform="rotate(12 296 248)"/>
+      <ellipse cx="304" cy="70" rx="22" ry="15" fill="#2B2622" opacity=".06" transform="rotate(-30 304 70)"/>
+      <ellipse cx="70" cy="252" rx="26" ry="17" fill="#2B2622" opacity=".055" transform="rotate(24 70 252)"/>
+      <text x="185" y="160.0" text-anchor="middle" dominant-baseline="central" font-family="'Yusei Magic', sans-serif" font-weight="400" font-size="49.7" fill="#2B2622" letter-spacing="0" >まだ帰れない</text></svg></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="plate">
+  <header><span class="code">SUMMARY</span><h2>5 案の比較<span class="en">COMPARISON</span></h2></header>
+  <div class="inner">
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>案</th><th>可読性</th><th>独自性</th><th>受け皿になる文言</th><th>主なターゲット</th><th>判定</th></tr></thead>
+        <tbody>
+          <tr><td><b>A 現場の黒板</b></td><td>◎ 最強</td><td>○</td><td>断定・業務連絡・汎用</td><td>男性整備士</td><td><span class="pick">第1弾に推す</span></td></tr>
+          <tr><td><b>B 安全標識</b></td><td>◎</td><td>◎</td><td>注意喚起・強い断り</td><td>現場職全般</td><td>差し色として 3〜5個</td></tr>
+          <tr><td><b>C 油染み</b></td><td>△ 最小で弱い</td><td>◎</td><td>疲弊・自虐・共感</td><td>整備士本人</td><td><span class="pick">第2弾に推す</span></td></tr>
+          <tr><td><b>D 整備伝票</b></td><td>○</td><td>◎ 最高</td><td>事務・進捗・接客</td><td>フロント・事務</td><td>第3弾</td></tr>
+          <tr><td><b>E ポップ</b></td><td>◎</td><td>△</td><td>挨拶・リアクション</td><td>若手・女性</td><td>第4弾／汎用の受け皿</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="plate">
+  <header><span class="code">PLAN</span><h2>シリーズ構成の提案<span class="en">SERIES</span></h2></header>
+  <div class="inner">
+    <p class="note"><b>1 セット = 1 パターンで統一する</b>ことを勧める。40 個の中でデザインを混ぜると散らかって見え、シリーズとして認識されない。逆に 1 パターンで揃えれば、そのまま第 2 弾・第 3 弾へ展開でき、<b>リピート購入という最大の収益源</b>が生きる。</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>弾</th><th>パターン</th><th>文言の構成</th><th>狙い</th></tr></thead>
+        <tbody>
+          <tr><td><b>第1弾</b></td><td>A 現場の黒板</td><td>汎用 13 ＋ 業務連絡 20 ＋ B 標識を差し色で 5〜7</td><td>最も読めて最も使われる。ここで市場があるか検証する</td></tr>
+          <tr><td><b>第2弾</b></td><td>C 油染み・かすれ</td><td>あるある・自虐を中心に 40</td><td>共感で SNS 拡散を取る。第1弾の購入者がそのまま買う</td></tr>
+          <tr><td><b>第3弾</b></td><td>D 整備伝票</td><td>接客・事務・進捗で 40</td><td>フロント・事務へ客層を広げる</td></tr>
+          <tr><td><b>第4弾</b></td><td>E ポップガレージ</td><td>挨拶・リアクション中心で 40</td><td>年齢層と性別を広げる。日常挨拶市場への足がかり</td></tr>
+          <tr><td><b>派生</b></td><td>各パターン流用</td><td>二輪 / 板金 / 重機、関西弁版</td><td>版面はそのまま、語彙だけ差し替えて量産する</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="warn">
+      <p><b>第1弾に A を推す理由。</b>最小サイズで読めることが、文字スタンプでは他のすべてに優先する。C の共感の強さは魅力だが、58px で読めない文字は一覧で選ばれず、そもそも送信されない。<b>まず読めるもので市場の有無を確かめ、当たってから C で深く刺す</b>という順序が安全。</p>
+      <p><b>ただし C を第1弾にする判断もありうる。</b>SNS で拡散させて外から人を連れてくる戦略なら、可読性より共感が優先される。その場合はかすれを弱め、文字を太らせて可読性を底上げすること。</p>
+    </div>
+  </div>
+</section>
+
+<section class="plate">
+  <header><span class="code">FONTS</span><h2>この見本で使った書体<span class="en">TYPEFACES</span></h2></header>
+  <div class="inner">
+    <p class="note">5 案すべて <b>Google Fonts で配布されている書体</b>だけで組んである。Google Fonts の日本語書体は原則 SIL Open Font License で、<b>商用利用・改変ともに可</b>。文字が商品になる以上ここが事業の根幹なので、意図的にこの範囲だけで作った。</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>書体</th><th>使った案</th><th>役割</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">Dela Gothic One</td><td>A</td><td>極太ディスプレイ。断定と叫び</td></tr>
+          <tr><td class="mono">Noto Sans JP 900</td><td>B</td><td>角の立ったゴシック。標識・警告</td></tr>
+          <tr><td class="mono">Yusei Magic</td><td>C</td><td>手書きマーカー。疲弊と自虐</td></tr>
+          <tr><td class="mono">BIZ UDPGothic 700</td><td>D</td><td>書類の本文。事務・進捗</td></tr>
+          <tr><td class="mono">Noto Serif JP 900</td><td>D</td><td>判子・重い言葉・皮肉</td></tr>
+          <tr><td class="mono">Zen Maru Gothic 900</td><td>E</td><td>丸ゴシック。挨拶・リアクション</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="warn">
+      <p><b>使用前に必ず各書体の配布ページでライセンス原文を確認すること。</b>ライセンスは改定される。確認した時点の規約は PDF かスクリーンショットで保存しておく。</p>
+      <p><b>PC にプリインストールされている書体（ヒラギノ・游ゴシック・メイリオ等）をそのまま使わない。</b>製品への使用には別途許諾が必要な場合がある。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  文言はすべて <span class="mono">content/04-text-only-candidates.md</span> の候補 161 個から採用。
+  画像仕様の機械チェックは <span class="mono">tools/check_stickers.py</span>。
+  制作ガイドラインと審査基準は改定されるため、申請直前に <a href="https://creator.line.me/ja/guideline/sticker/">LINE Creators Market 公式</a>で再確認すること。
+</footer>
+</div>
