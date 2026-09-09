@@ -138,6 +138,14 @@ def main(argv=None) -> int:
         sys.exit(f"{args.src} に PNG がない")
     args.dst.mkdir(parents=True, exist_ok=True)
 
+    # 前回の出力が残っていると枚数が合わなくなるので、先に片付ける
+    stale = [q for q in args.dst.glob("*.png")
+             if q.stem == "main" or q.stem == "tab" or (q.stem.isdigit() and len(q.stem) == 2)]
+    for q in stale:
+        q.unlink()
+    if stale:
+        print(f"出力先の前回分 {len(stale)} 件を削除しました")
+
     print(f"背景を抜いています（{len(files)} 枚）…")
     cut, boxes = [], []
     for p in files:
