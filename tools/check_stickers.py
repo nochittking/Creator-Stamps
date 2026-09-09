@@ -40,7 +40,7 @@ TAB_SIZE = (96, 74)
 STICKER_MAX = (370, 320)
 ANIMATION_MAX = (320, 270)
 MAX_BYTES = 1024 * 1024          # 1MB / 画像
-REQUIRED_MARGIN = 10             # 周囲 10px の余白
+REQUIRED_MARGIN = 10             # 周囲 10px（旧ガイドラインの推奨。現在は必須ではない）
 VALID_COUNTS = (8, 16, 24, 32, 40)
 ANIM_FRAMES = (5, 20)            # 5〜20 フレーム
 ANIM_MAX_SECONDS = 4.0
@@ -285,7 +285,11 @@ def check_image(path: Path, kind: str, animation: bool, rep: Report) -> None:
 
     if kind == "sticker" and not animation:
         if not margin_transparent(alpha, REQUIRED_MARGIN):
-            rep.error(f"{label}: 外周 {REQUIRED_MARGIN}px に絵がはみ出している（余白が必要）")
+            if margin_transparent(alpha, 1):
+                rep.warn(f"{label}: 外周 {REQUIRED_MARGIN}px に絵がかかっている"
+                         "（旧ガイドラインの推奨値。詰めて描く作りなら問題ない）")
+            else:
+                rep.error(f"{label}: 絵が画像の端に接している。1px でも透過の余白を残すこと")
         bounds = content_bounds(alpha)
         if bounds is None:
             rep.error(f"{label}: 不透明ピクセルが 1つもない（空の画像）")

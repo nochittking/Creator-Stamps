@@ -40,11 +40,17 @@ def write_png(
     margin: int = 10,
     color_type: int = 6,
     fully_opaque: bool = False,
+    bleed: bool = False,
     apng: tuple[int, float] | None = None,
 ) -> Path:
-    """検査対象の PNG を書き出す。apng=(フレーム数, 総秒数) で APNG になる。"""
+    """検査対象の PNG を書き出す。apng=(フレーム数, 総秒数) で APNG になる。
+
+    bleed=True は「絵が端に接しているが全面不透明ではない」状態を作る。
+    """
     if fully_opaque:
         opaque = (0, 0, width - 1, height - 1)
+    elif bleed:
+        opaque = (0, 0, width - 1, height - 80)
     else:
         opaque = (margin, margin, width - 1 - margin, height - 1 - margin)
 
@@ -145,11 +151,18 @@ class TestTransparency(TempDirCase):
         rep = cs.run(d, animation=False)
         self.assertTrue(any("透過処理" in e for e in rep.errors))
 
-    def test_insufficient_margin_is_error(self) -> None:
+    def test_insufficient_margin_is_warning(self) -> None:
         d = build_set(self.tmp / "margin")
         write_png(d / "01.png", 370, 320, margin=3)
         rep = cs.run(d, animation=False)
-        self.assertTrue(any("外周" in e for e in rep.errors))
+        self.assertEqual(rep.errors, [])
+        self.assertTrue(any("外周" in w for w in rep.warnings))
+
+    def test_touching_the_edge_is_error(self) -> None:
+        d = build_set(self.tmp / "edge")
+        write_png(d / "01.png", 370, 320, bleed=True)
+        rep = cs.run(d, animation=False)
+        self.assertTrue(any("端に接している" in e for e in rep.errors))
 
     def test_exact_10px_margin_passes(self) -> None:
         rep = cs.run(build_set(self.tmp / "exact", margin=10), animation=False)
