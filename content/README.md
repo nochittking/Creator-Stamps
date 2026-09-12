@@ -33,7 +33,8 @@ LINEスタンプは「イラスト」ではなく「会話の部品」であり�
 | [03-mechanic-team-pop-40.md](03-mechanic-team-pop-40.md) | 整備士・社内グループ会話（ポップ） | セリフ確定・作画待ち／**1本目推奨** |
 | [04-text-only-candidates.md](04-text-only-candidates.md) | **文字スタンプ用 文言候補161個** | 候補出し済み／**40個の選定中** |
 | [05-warning-lamp-set-40.md](05-warning-lamp-set-40.md) | **手描き警告灯セット40個（第1弾）** | **構成確定・作画中** |
-| [06-submission.md](06-submission.md) | **入稿手順とメタデータ** | **画像は整形済み／枚数の確定待ち** |
+| [06-submission.md](06-submission.md) | 入稿手順とメタデータ | 画像・16個とも確定 |
+| [07-registration-input.md](07-registration-input.md) | **申請フォームへの入力内容（コピペ用）** | **クリエイター登録済み／申請待ち** |
 
 ## 作る前にやること（doc 03 の検証アクション）
 

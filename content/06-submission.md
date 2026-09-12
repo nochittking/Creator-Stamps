@@ -104,7 +104,10 @@ python3 tools/check_stickers.py stickers/set01
 整備士さんに刺さるひとことも入っています。
 ```
 
-### 説明文（英語 / 海外配信する場合）
+### 説明文（英語）
+
+> ⚠️ **訂正: 英語のタイトル・説明文は必須。** LINE STORE とアプリ内ショップは
+> 基本が英語表記のため。タイトル半角40文字以内 / 説明文半角160文字以内。
 
 ```
 Hand-drawn car warning lights with short phrases.
@@ -112,7 +115,11 @@ Hazard lights for "thank you", temperature gauge for "so hot" / "so cold" —
 if you drive, you'll get it instantly.
 ```
 
-### タグ（内容と一致するものだけ。無関係なタグはリジェクト対象）
+### タグ
+
+> ⚠️ **訂正: タグは1スタンプにつき3個まで。しかも自由入力ではなく選択式。**
+> 下の10個は「どの方向を狙うか」の材料であり、そのまま入力はできない。
+> 実際の選び方は [07-registration-input.md](07-registration-input.md) を参照。
 
 ```
 車 / クルマ / 警告灯 / メーター / 運転 / ドライブ / 手書き / シンプル / 挨拶 / あるある
