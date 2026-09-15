@@ -34,7 +34,8 @@ LINEスタンプは「イラスト」ではなく「会話の部品」であり�
 | [04-text-only-candidates.md](04-text-only-candidates.md) | **文字スタンプ用 文言候補161個** | 候補出し済み／**40個の選定中** |
 | [05-warning-lamp-set-40.md](05-warning-lamp-set-40.md) | **手描き警告灯セット40個（第1弾）** | **構成確定・作画中** |
 | [06-submission.md](06-submission.md) | 入稿手順とメタデータ | 画像・16個とも確定 |
-| [07-registration-input.md](07-registration-input.md) | **申請フォームへの入力内容（コピペ用）** | **クリエイター登録済み／申請待ち** |
+| [07-registration-input.md](07-registration-input.md) | 申請フォームへの入力内容 | 第1弾 **販売中**（スタンプID 47407309） |
+| [08-emoji-tools-40.md](08-emoji-tools-40.md) | **第2弾 絵文字: 整備工具40個** | **リスト確定・作画前** |
 
 ## 作る前にやること（doc 03 の検証アクション）
 
