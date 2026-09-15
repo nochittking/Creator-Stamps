@@ -36,6 +36,7 @@ LINEスタンプは「イラスト」ではなく「会話の部品」であり�
 | [06-submission.md](06-submission.md) | 入稿手順とメタデータ | 画像・16個とも確定 |
 | [07-registration-input.md](07-registration-input.md) | 申請フォームへの入力内容 | 第1弾 **販売中**（スタンプID 47407309） |
 | [08-emoji-tools-40.md](08-emoji-tools-40.md) | **第2弾 絵文字: 整備工具40個** | **リスト確定・作画前** |
+| [09-emoji-costumes-40.md](09-emoji-costumes-40.md) | 案: 衣装だけの絵文字40個 | 検討中／年末狙い・別名義を想定 |
 
 ## 作る前にやること（doc 03 の検証アクション）
 
