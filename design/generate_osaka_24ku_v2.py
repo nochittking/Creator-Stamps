@@ -38,6 +38,8 @@ FONT_LINK = "https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@80
 TEXT_BOX = (MARGIN + 10, MARGIN + 8, 186, 172)    # 左上。白フチ（字の 13%）が外周 10px に入らない位置
 MAP_BOX = (W - MARGIN - 86, MARGIN + 4, W - MARGIN - 4, MARGIN + 92)
 SHAPE_BOX = (60, 64, W - MARGIN - 8, H - MARGIN - 8)
+# 全体図なし版。右上が空くぶん上へ広げる（左上の文字とは白フチ越しに重なってよい）
+SHAPE_BOX_NOMAP = (60, 44, W - MARGIN - 8, H - MARGIN - 8)
 
 
 # ------------------------------------------------------------------ 幾何
@@ -84,8 +86,10 @@ def hits_map(rings, pad=8):
     return any(x0 - pad < x < x1 + pad and y0 - pad < y < y1 + pad for r in rings for x, y in r)
 
 
-def fit_shape(rings):
+def fit_shape(rings, with_map=True):
     """形を大きく置く。右上の全体図に当たるなら、全体図をよける箱のうち大きく置ける方を選ぶ。"""
+    if not with_map:
+        return place(rings, SHAPE_BOX_NOMAP)
     q = place(rings, SHAPE_BOX)
     if not hits_map(q):
         return q
@@ -306,10 +310,10 @@ def name_tag(name):
             f'font-weight="800" fill="#fff">{html.escape(name)}</text>')
 
 
-def stamp_svg(i, code, serif, face_name, mono):
+def stamp_svg(i, code, serif, face_name, mono, with_map=True):
     uid = f"{code}{'m' if mono else 'c'}"
     u = DATA[code]
-    rings = fit_shape([[tuple(p) for p in r] for r in u["rings"]])
+    rings = fit_shape([[tuple(p) for p in r] for r in u["rings"]], with_map)
     main = max(rings, key=area)
     cx, cy, r = pole(main)
     # 本体が細い区（此花・住之江）は顔が豆粒になる。はみ出しても最低 36 は確保する
@@ -331,7 +335,7 @@ def stamp_svg(i, code, serif, face_name, mono):
             f'{shade}'
             f'<path d="{d}" fill="none" stroke="{INK}" stroke-width="6" stroke-linejoin="round"/>'
             f'<g transform="translate({cx:.1f},{cy:.1f}) scale({k:.3f})">{face(face_name)}</g>'
-            f'{citymap(code)}{text_block(serif)}{name_tag(u["name"])}</svg>')
+            f'{citymap(code) if with_map else ""}{text_block(serif)}{name_tag(u["name"])}</svg>')
 
 
 # ------------------------------------------------------------------ 24区
@@ -363,15 +367,22 @@ WARDS = [
 ]
 
 
+MODES = {
+    "A_color": dict(mono=False, with_map=True),
+    "A_color_nomap": dict(mono=False, with_map=False),   # 2026-10-02 全体図あり／なしの比較用
+    "B_mono": dict(mono=True, with_map=True),
+}
+
+
 def main(only=None):
-    for mono, sub in ((False, "A_color"), (True, "B_mono")):
+    for sub, opt in MODES.items():
         out = HERE / "build" / "osaka_24ku_v2" / sub
         out.mkdir(parents=True, exist_ok=True)
         for i, (code, serif, face_name) in enumerate(WARDS):
             if only and code not in only:
                 continue
             name = f"{i + 1:02d}_{DATA[code]['name']}_{serif.replace('/', '')}.svg"
-            (out / name).write_text(stamp_svg(i, code, serif, face_name, mono), encoding="utf-8")
+            (out / name).write_text(stamp_svg(i, code, serif, face_name, **opt), encoding="utf-8")
     print("done")
 
 
