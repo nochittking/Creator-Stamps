@@ -27,6 +27,7 @@ LINEクリエイターズスタンプで **整備士向けニッチ / クリプ�
 | [tools/](tools/) | `check_stickers.py` — 申請前に画像仕様を機械チェックする（標準ライブラリのみ／Pillow不要） |
 | [design/generate_osaka_kun.py](design/generate_osaka_kun.py) | **新シリーズ試作「大阪府くん」** — 大阪府の本物の輪郭をキャラにした関西弁スタンプ20個のラフ（[公開版](https://claude.ai/artifact/DxeKs5Znp5MPvrPRZ8j5mE)）。仕様は [content/10](content/10-osaka-fu-kun-20.md) |
 | [design/generate_osaka_24ku.py](design/generate_osaka_24ku.py) | **新シリーズ試作「大阪市24区」** — 24区の形キャラ×区ネタ24個のラフ（[公開版](https://claude.ai/artifact/8EcLmKn878QR1kAWCipQCk)）。仕様は [content/11](content/11-osaka-24ku.md) |
+| [design/generate_osaka_24ku_v2.py](design/generate_osaka_24ku_v2.py) | **大阪市24区 v2 劇画版** — 区の形をほぼ元のまま描き、劇画調の顔・集中線・全体図。カラーと白黒の2案（[公開版](https://claude.ai/artifact/YDEAzGuUDu2SDDKDHbKHPG)） |
 | [design/](design/) | **造形見本 vol.2**（[公開版](https://claude.ai/code/artifact/5297adb2-d861-40e3-8fa3-f6a2236d569d)）— 書体12種・枠なしレタリング・工具/車モチーフ。ほか vol.1 の[配色見本](https://claude.ai/code/artifact/76909693-99cd-40e7-9790-6cf063b5202c)、ほかにキャラクター設定シートと作画ブリーフ（[公開版](https://claude.ai/code/artifact/6f3980f9-1a3b-4f25-b31f-13f40eb60e23)）。**現在は保留中** — 文字主体の方針に切り替えたため |
 
 ```bash
