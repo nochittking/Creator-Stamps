@@ -310,7 +310,18 @@ def name_tag(name):
             f'font-weight="800" fill="#fff">{html.escape(name)}</text>')
 
 
-def stamp_svg(i, code, serif, face_name, mono, with_map=True):
+def face_layer(face_name, mode, cx, cy, k):
+    if mode == "none":
+        return ""
+    if mode == "guide":
+        # 自動配置の顔が占めていた範囲（顔の座標系で x ±105、y -70〜+110）
+        return (f'<ellipse cx="{cx:.1f}" cy="{cy + 20 * k:.1f}" rx="{105 * k:.1f}" ry="{92 * k:.1f}" '
+                f'fill="none" stroke="#6F6670" stroke-width="2" stroke-dasharray="5 5" opacity=".7"/>')
+    return f'<g transform="translate({cx:.1f},{cy:.1f}) scale({k:.3f})">{face(face_name)}</g>'
+
+
+def stamp_svg(i, code, serif, face_name, mono, with_map=True, face_mode="face"):
+    """face_mode: "face" 劇画の顔 ／ "none" 顔なし（手描き用） ／ "guide" 顔の位置にうすい点線の丸"""
     uid = f"{code}{'m' if mono else 'c'}"
     u = DATA[code]
     rings = fit_shape([[tuple(p) for p in r] for r in u["rings"]], with_map)
@@ -334,7 +345,7 @@ def stamp_svg(i, code, serif, face_name, mono, with_map=True):
             f'<path d="{d}" fill="{fill}" stroke="{INK}" stroke-width="6" stroke-linejoin="round"/>'
             f'{shade}'
             f'<path d="{d}" fill="none" stroke="{INK}" stroke-width="6" stroke-linejoin="round"/>'
-            f'<g transform="translate({cx:.1f},{cy:.1f}) scale({k:.3f})">{face(face_name)}</g>'
+            f'{face_layer(face_name, face_mode, cx, cy, k)}'
             f'{citymap(code) if with_map else ""}{text_block(serif)}{name_tag(u["name"])}</svg>')
 
 
@@ -371,6 +382,9 @@ MODES = {
     "A_color": dict(mono=False, with_map=True),
     "A_color_nomap": dict(mono=False, with_map=False),   # 2026-10-02 全体図あり／なしの比較用
     "B_mono": dict(mono=True, with_map=True),
+    # 2026-10-02 ユーザーが劇画の顔を手描きで足すための下絵（全体図あり・カラー）
+    "A_color_noface": dict(mono=False, with_map=True, face_mode="none"),
+    "A_color_noface_guide": dict(mono=False, with_map=True, face_mode="guide"),
 }
 
 
