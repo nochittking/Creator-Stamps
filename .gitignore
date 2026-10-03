@@ -1,3 +1,6 @@
 __pycache__/
 *.pyc
 stickers/
+
+# 全国30シリーズの PNG は export_series.js で作り直せるので入れない
+design/build/series_png/

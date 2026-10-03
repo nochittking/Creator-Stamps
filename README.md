@@ -18,6 +18,7 @@ LINEクリエイターズスタンプで **整備士向けニッチ / クリプ�
 | 07 | [実在車種を描くことの権利整理](docs/07-car-design-rights.md) | 意匠権・著作権・パブリシティ権が届かない理由と、唯一残る商標権。先行作品の回避策と、戦略上の判断 |
 | 08 | [都道府県・市区町村スタンプ 市場調査](docs/08-prefecture-market.md) | **新シリーズ案。** 都道府県／市区町村の形をモチーフにした競合のランキング、第一案・第二案の切り方と権利面の注意 |
 | 09 | [大阪府72区市町村 ネタ調査](docs/09-osaka-72-units.md) | 区まで分けると72。全72のネタ（ダジャレ・名物・自虐・間違われ）と使いやすさ、審査に通る毒舌の線引き |
+| 10 | [全国30シリーズ 叩き台](docs/10-national-30-series.md) | **人口上位の都市・地域30シリーズ560個。** 選び方、地方別の一覧、PDCAで直したこと、要確認（[公開版](https://claude.ai/artifact/LFm322mU2MTQCdm7QebG83)） |
 
 ## 制作物
 
@@ -28,6 +29,7 @@ LINEクリエイターズスタンプで **整備士向けニッチ / クリプ�
 | [design/generate_osaka_kun.py](design/generate_osaka_kun.py) | **新シリーズ試作「大阪府くん」** — 大阪府の本物の輪郭をキャラにした関西弁スタンプ20個のラフ（[公開版](https://claude.ai/artifact/DxeKs5Znp5MPvrPRZ8j5mE)）。仕様は [content/10](content/10-osaka-fu-kun-20.md) |
 | [design/generate_osaka_24ku.py](design/generate_osaka_24ku.py) | **新シリーズ試作「大阪市24区」** — 24区の形キャラ×区ネタ24個のラフ（[公開版](https://claude.ai/artifact/8EcLmKn878QR1kAWCipQCk)）。仕様は [content/11](content/11-osaka-24ku.md) |
 | [design/generate_osaka_24ku_v2.py](design/generate_osaka_24ku_v2.py) | **大阪市24区 v2 劇画版** — 区の形をほぼ元のまま描き、劇画調の顔・集中線・全体図。カラーと白黒の2案（[公開版](https://claude.ai/artifact/YDEAzGuUDu2SDDKDHbKHPG)） |
+| [design/generate_city_series.py](design/generate_city_series.py) | **全国30シリーズ** — セリフは [series_data.py](design/series_data.py)、輪郭は build_series_geo.py、書き出しは export_series.js。SVG は design/build/series/、一覧画像は design/build/series_sheets/ |
 | [design/](design/) | **造形見本 vol.2**（[公開版](https://claude.ai/code/artifact/5297adb2-d861-40e3-8fa3-f6a2236d569d)）— 書体12種・枠なしレタリング・工具/車モチーフ。ほか vol.1 の[配色見本](https://claude.ai/code/artifact/76909693-99cd-40e7-9790-6cf063b5202c)、ほかにキャラクター設定シートと作画ブリーフ（[公開版](https://claude.ai/code/artifact/6f3980f9-1a3b-4f25-b31f-13f40eb60e23)）。**現在は保留中** — 文字主体の方針に切り替えたため |
 
 ```bash
