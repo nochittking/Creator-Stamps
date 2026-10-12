@@ -287,17 +287,44 @@ def citymap(target):
     return out
 
 
+SMALL = 0.6   # （ ）で囲んだ字の大きさ。都（島）・済み（住）のような種明かしを小さく添える
+
+
+def _runs(line):
+    """「都（島）」→ [("都", 1), ("（島）", SMALL)]"""
+    out, buf, small = [], "", False
+    for ch in line:
+        if ch in "（(" and not small:
+            if buf:
+                out.append((buf, 1))
+            buf, small = "（", True
+        elif ch in "）)" and small:
+            out.append((buf + "）", SMALL))
+            buf, small = "", False
+        else:
+            buf += ch
+    if buf:
+        out.append((buf, SMALL if small else 1))
+    return out
+
+
+def _width(line):
+    return sum(len(t) * k for t, k in _runs(line))
+
+
 def text_block(serif):
     lines = serif.split("/")
-    longest = max(len(l) for l in lines)
+    longest = max(_width(l) for l in lines)
     x0, y0, x1, y1 = TEXT_BOX
     size = min(50, (x1 - x0) / longest, (y1 - y0) / len(lines) / 1.08)
     y = y0 + size * 0.92
     out = []
     for line in lines:
+        body = "".join(html.escape(t) if k == 1 else f'<tspan font-size="{size * k:.1f}">{html.escape(t)}</tspan>'
+                       for t, k in _runs(line))
         out.append(f'<text x="{x0}" y="{y:.1f}" font-size="{size:.1f}" font-family="{FONT}" font-weight="800" '
                    f'fill="{INK}" stroke="#fff" stroke-width="{size * 0.26:.1f}" paint-order="stroke" '
-                   f'stroke-linejoin="round">{html.escape(line)}</text>')
+                   f'stroke-linejoin="round">{body}</text>')
         y += size * 1.08
     return "".join(out)
 
@@ -368,7 +395,7 @@ WARDS = [
     ("27116", "焼肉/行こ！", "劇画スマイル"),
     ("27117", "おはよう/さん！", "劇画スマイル"),
     ("27118", "名前/だけ/やん！", "ニヒル"),
-    ("27102", "住めば/都や/で", "渋い笑み"),
+    ("27102", "住めば/都（島）/やで！", "渋い笑み"),   # 2026-10-12 ユーザー案。島を小さく添える
     ("27124", "鶴の/一声や！", "決意"),
     ("27125", "遠っ！", "驚愕"),
     ("27120", "済み/よし！", "劇画スマイル"),
