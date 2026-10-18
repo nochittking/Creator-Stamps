@@ -20,6 +20,7 @@ LINEクリエイターズスタンプで **整備士向けニッチ / クリプ�
 | 09 | [大阪府72区市町村 ネタ調査](docs/09-osaka-72-units.md) | 区まで分けると72。全72のネタ（ダジャレ・名物・自虐・間違われ）と使いやすさ、審査に通る毒舌の線引き |
 | 10 | [全国30シリーズ 叩き台](docs/10-national-30-series.md) | **人口上位の都市・地域30シリーズ560個。** 選び方、地方別の一覧、PDCAで直したこと、要確認（[公開版](https://claude.ai/artifact/LFm322mU2MTQCdm7QebG83)） |
 | 11 | [わが街スタンプ 京都編](docs/11-kyoto-24.md) | **京都市11区＋府の6市＋京都府くんで24個。** シリーズのルール（1つの街で24個、区は全部1枚以上）、ネタの調査と線引き（[試作](https://claude.ai/artifact/REPXMQba6vH2FsCuHUczaA)） |
+| 12 | [わが街スタンプ 近畿4県](docs/12-kinki-machi24.md) | **兵庫・滋賀・奈良・和歌山を各24個。** 調査・線引き・作図で直したこと（[試作](https://claude.ai/artifact/BE7aPkNryHboBF1xHLBrYz)） |
 
 ## 制作物
 
@@ -31,6 +32,8 @@ LINEクリエイターズスタンプで **整備士向けニッチ / クリプ�
 | [design/generate_osaka_24ku.py](design/generate_osaka_24ku.py) | **新シリーズ試作「大阪市24区」** — 24区の形キャラ×区ネタ24個のラフ（[公開版](https://claude.ai/artifact/8EcLmKn878QR1kAWCipQCk)）。仕様は [content/11](content/11-osaka-24ku.md) |
 | [design/generate_osaka_24ku_v2.py](design/generate_osaka_24ku_v2.py) | **大阪市24区 v2 劇画版** — 区の形をほぼ元のまま描き、劇画調の顔・集中線・全体図。カラーと白黒の2案（[公開版](https://claude.ai/artifact/YDEAzGuUDu2SDDKDHbKHPG)） |
 | [design/generate_kyoto24.py](design/generate_kyoto24.py) | **わが街スタンプ 京都編 24個** — 輪郭は build_kyoto24_geo.py。右上の全体図は区なら京都市、市と京都府くんなら京都府 |
+| [design/generate_machi24.py](design/generate_machi24.py) | **わが街スタンプ 近畿4県** — セリフは machi24_data.py、輪郭は build_machi24_geo.py。どの県も設定を足せば同じ型で作れる |
+| [design/render_png.js](design/render_png.js) | SVG → PNG。手元のしっぽり明朝を必ず使い、読み込めなければ止める（中国語フォントで描かれた不具合の対策） |
 | [design/generate_city_series.py](design/generate_city_series.py) | **全国30シリーズ** — セリフは [series_data.py](design/series_data.py)、輪郭は build_series_geo.py、書き出しは export_series.js。SVG は design/build/series/、一覧画像は design/build/series_sheets/ |
 | [design/](design/) | **造形見本 vol.2**（[公開版](https://claude.ai/code/artifact/5297adb2-d861-40e3-8fa3-f6a2236d569d)）— 書体12種・枠なしレタリング・工具/車モチーフ。ほか vol.1 の[配色見本](https://claude.ai/code/artifact/76909693-99cd-40e7-9790-6cf063b5202c)、ほかにキャラクター設定シートと作画ブリーフ（[公開版](https://claude.ai/code/artifact/6f3980f9-1a3b-4f25-b31f-13f40eb60e23)）。**現在は保留中** — 文字主体の方針に切り替えたため |
 

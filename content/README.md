@@ -41,6 +41,7 @@ LINEスタンプは「イラスト」ではなく「会話の部品」であり�
 | [11-osaka-24ku.md](11-osaka-24ku.md) | **新シリーズ試作: 大阪市24区（区の形キャラ×区ネタ）24個** | **v2 劇画版（カラー／白黒）完成・どちらか判断待ち** |
 | [12-osaka-24ku-registration.md](12-osaka-24ku-registration.md) | **大阪市24区 申請フォームへの入力内容**（全体図あり版で正式決定） | **申請ファイル準備完了・ERROR 0** |
 | [13-kyoto-24-registration.md](13-kyoto-24-registration.md) | **わが街スタンプ 京都編 申請フォームへの入力内容**（京都市11区＋府の6市＋京都府くん） | **申請ファイル準備完了・ERROR 0** |
+| [14-kinki-machi24-registration.md](14-kinki-machi24-registration.md) | **わが街スタンプ 近畿4県 申請フォームへの入力内容（下書き）** | **申請ファイル準備完了・ERROR 0** |
 
 ## 作る前にやること（doc 03 の検証アクション）
 
