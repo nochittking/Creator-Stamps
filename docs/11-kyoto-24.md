@@ -1,7 +1,7 @@
 # わが街スタンプ 京都編 — 調査と24個の割り振り
 
 **調査日**: 2026-10-18
-**状態**: 試作（ラフ）
+**状態**: 決定版（2026-10-18）。申請フォームの入力内容は [content/13](../content/13-kyoto-24-registration.md)
 **生成**: `cd design && python3 generate_kyoto24.py && node render_png.js build/kyoto24 build/kyoto24_png`
 **確認用ページ**: https://claude.ai/artifact/REPXMQba6vH2FsCuHUczaA
 
