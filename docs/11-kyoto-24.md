@@ -2,7 +2,7 @@
 
 **調査日**: 2026-10-18
 **状態**: 試作（ラフ）
-**生成**: `cd design && python3 generate_kyoto24.py` → `design/build/kyoto24/`（SVG）、`design/build/kyoto24_png/`（370×320 透過PNG）
+**生成**: `cd design && python3 generate_kyoto24.py && node render_png.js build/kyoto24 build/kyoto24_png`
 **確認用ページ**: https://claude.ai/artifact/REPXMQba6vH2FsCuHUczaA
 
 ---
@@ -103,6 +103,8 @@
 | 「ちょっと／つまんで／こ」の3行目が1字 | 「食べ歩き／しよか」に変更 |
 | メイン画像の地図が白く抜けた | スタンプに出ない町村にも色を付け、顔を小さくした |
 | 舞鶴市の形の中に線 | 舞鶴湾の細い入り口。地図として正しいのでそのまま |
+| 漢字が中国の字形になった（ユーザー指摘: 駅・返・誤・割・今） | フォントの読み込みに失敗し、中国語フォント（WenQuanYi Zen Hei）で描かれていた。大阪市24区も同じ。`design/render_png.js` で手元のしっぽり明朝を必ず使い、読み込めなければ止めるようにして全部作り直した |
+| 全角「！」が斜めの線に見えた | しっぽり明朝の「！」のデザイン。描くときだけ半角「!」（まっすぐ）に置き換える |
 
 `check_stickers.py design/build/kyoto24_png/`: ERROR 0。WARN はファイル名（申請時に 01.png〜 に付け直す）だけ。
 

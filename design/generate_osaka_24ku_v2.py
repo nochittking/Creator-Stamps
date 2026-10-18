@@ -313,7 +313,8 @@ def _width(line):
 
 
 def text_block(serif):
-    lines = serif.split("/")
+    # しっぽり明朝 B1 の全角「！」は斜めの線に見えるデザイン（2026-10-18）。半角「!」はまっすぐなので描くときだけ置き換える
+    lines = serif.replace("！", "!").split("/")
     longest = max(_width(l) for l in lines)
     x0, y0, x1, y1 = TEXT_BOX
     size = min(50, (x1 - x0) / longest, (y1 - y0) / len(lines) / 1.08)

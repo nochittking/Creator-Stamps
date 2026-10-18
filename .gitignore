@@ -4,3 +4,6 @@ stickers/
 
 # 全国30シリーズの PNG は export_series.js で作り直せるので入れない
 design/build/series_png/
+
+# フォント本体は大きいので入れない（design/render_png.js の先頭に取得手順）
+design/fonts/*.ttf
