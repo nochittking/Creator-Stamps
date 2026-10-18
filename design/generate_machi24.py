@@ -52,7 +52,12 @@ class Area:
         px0, py0, px1, _ = bbox(placed)
         s = (px1 - px0) / (rx1 - rx0)
         mx, my = self.face_point(raw)
-        return px0 + (mx - rx0) * s, py0 + (my - ry0) * s, r
+        cx, cy = px0 + (mx - rx0) * s, py0 + (my - ry0) * s
+        # 大きい顔（滋賀県くん r=70）が形の外へ出すぎないよう、外接枠の内側に寄せる
+        _, _, _, py1 = bbox(placed)
+        cx = min(max(cx, px0 + r * 0.8), px1 - r * 0.8)
+        cy = min(max(cy, py0 + r * 0.8), py1 - r * 0.8)
+        return cx, cy, r
 
     @staticmethod
     def drop_holes(rings):
@@ -110,15 +115,11 @@ class Area:
             kind = "city" if code in self.a["city_wards"] else "pref"
             highlight = [code]
         rings = fit_shape(parts, serif, whole)
-        f = self.mapper(parts, rings)
-        lake = self.lake_path(f)
+        # 湖を描くのは県くんだけ。市町は build_machi24_geo.py で湖をくり抜いた陸だけの形になっている
+        lake = self.lake_path(self.mapper(parts, rings)) if whole else ""
         cx, cy, r = face_spot(rings, whole, serif)
-        if lake and not whole:
-            # 湖に面した市町は、湖の上を陸と数えると顔が水の上に乗る。陸の上で最も広い場所を探し直す
-            water = [[f(x, y) for x, y in ring] for ring in self.geo["lake"]]
-            cx, cy, r = face_on_land(max(rings, key=area), water, serif, (cx, cy, r))
         if whole:
-            cx, cy, r = self.whole_face(parts, rings)
+            cx, cy, r = self.whole_face(parts, rings, self.a.get("whole_face_r", 44))
         k = r * 1.7 / 210
         uid = f"m{i}"
         fill = COLORS[i % len(COLORS)]
@@ -135,7 +136,6 @@ class Area:
                 f'<path d="{d}" fill="{fill}" stroke="{fill}" stroke-width="2.5" stroke-linejoin="round"/>'
                 f'<g clip-path="url(#clip{uid})"><rect x="{shade_x:.1f}" y="0" width="{W}" height="{H}" '
                 f'fill="url(#hatch{uid})" opacity="0.35"/></g>'
-                # 湖は形の中だけ（湖に面した市町は、湖の上の部分が水色になる）
                 + (f'<g clip-path="url(#clip{uid})"><path d="{lake}" fill="{LAKE}" stroke="{INK}" stroke-width="3" '
                    f'stroke-linejoin="round"/></g>' if lake else "")
                 + f'<g transform="translate({cx:.1f},{cy:.1f}) scale({k:.3f})">{face(face_name)}</g>'
@@ -213,31 +213,6 @@ class Area:
         (out / "main.svg").write_text(self.main_svg(), encoding="utf-8")
         (out / "tab.svg").write_text(self.tab_svg(), encoding="utf-8")
         print(f"{self.a['label']:<6} {len(self.a['items'])} stamps + main + tab → {out.relative_to(HERE)}")
-
-
-def face_on_land(p, water, serif, fallback, n=40):
-    """到達不能極を、湖（water）の外だけで探す。湖の岸も縁として距離を測る。セリフの範囲は避ける。"""
-    from generate_city_series import text_rect
-    from generate_osaka_24ku_v2 import seg_dist
-    ax0, ay0, ax1, ay1 = text_rect(serif)
-    xs, ys = [q[0] for q in p], [q[1] for q in p]
-    edges = [(p[k - 1], p[k]) for k in range(len(p))] + [(w[k - 1], w[k]) for w in water for k in range(len(w))]
-    best = None
-    for i in range(n + 1):
-        for j in range(n + 1):
-            x = min(xs) + (max(xs) - min(xs)) * i / n
-            y = min(ys) + (max(ys) - min(ys)) * j / n
-            if not inside_any(x, y, [p]) or inside_any(x, y, water):
-                continue
-            d = min(seg_dist(x, y, a, b) for a, b in edges)
-            dx = max(ax0 - x, 0, x - ax1)
-            dy = max(ay0 - y, 0, y - ay1)
-            score = min(d, max(math.hypot(dx, dy) - 6, 0) * 1.2 + d * 0.15)
-            if best is None or score > best[3]:
-                best = (x, y, d, score)
-    if best is None:
-        return fallback
-    return best[0], best[1], max(36, min(best[2], 62))   # 細い陸地（彦根・大津）でも顔が豆粒にならないよう最低36（他の区と同じ）
 
 
 def focus_rays(cx, cy, r0=92, r1=260, n=44):

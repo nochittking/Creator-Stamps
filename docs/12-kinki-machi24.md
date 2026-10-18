@@ -2,7 +2,7 @@
 
 **調査日**: 2026-10-18
 **状態**: 試作（ユーザー確認待ち）。申請フォームの入力内容の下書きは [content/14](../content/14-kinki-machi24-registration.md)
-**生成**: `cd design && python3 build_machi24_geo.py --geo <dir> --pref <dir> && python3 generate_machi24.py && node render_png.js build/machi24/<id> build/machi24_png/<id>`
+**生成**（shapely が要る: `pip install shapely`）: `cd design && python3 build_machi24_geo.py --geo <dir> --pref <dir> && python3 generate_machi24.py && node render_png.js build/machi24/<id> build/machi24_png/<id>`
 **セリフのデータ**: `design/machi24_data.py`
 **確認用ページ**: https://claude.ai/artifact/BE7aPkNryHboBF1xHLBrYz
 
@@ -187,9 +187,9 @@
 | 生駒「大阪府民ちゃう／奈良県民や」の字が小さい | 「大阪ちゃう／奈良や！」 |
 | 和歌山県くんの顔がタブではみ出した | 顔の位置を日高川町から田辺市へ |
 | 滋賀県くんに琵琶湖がない（ユーザー指摘） | 国土数値情報の行政区域では湖の上もまわりの市町に含まれる（湖の真ん中は高島市、南湖は草津市）。Natural Earth 10m lakes（パブリックドメイン、点64個を角丸め）の琵琶湖を、県くん・右上の全体図・メイン・タブに重ねた。OpenStreetMap・国土数値情報の湖沼データはこの環境から取得できなかった |
-| 湖に面した市町（大津・草津・長浜・彦根など）の形に湖の上が入る | 形の中の湖の部分も濃い青で塗り、陸との境が分かるようにした。顔は湖の外（陸）だけで場所を探す |
+| 湖に面した市町（大津・草津・長浜・彦根など）の形に湖の上が入る | 湖を描くのは県くん3枚と全体図だけにする（ユーザー指示）。市町は湖をくり抜いた陸だけの形にした（shapely で行政区域 − 琵琶湖）。2% 未満の切れ端（沖島など）は捨てる |
 | 湖の水色が区・市町村の青と見分けにくい（大津市） | #7CC4EC → #3F9AD8 |
-| 滋賀県くんの顔が琵琶湖を隠す | 顔を東近江市の位置に。メイン画像は湖の東の端より右に |
+| 滋賀県くんの顔 | 東近江市の位置に、メイン画像くらいの大きさ（r=70）。琵琶湖に多少かぶってよい（ユーザー指示）。形の外へ出すぎないよう外接枠の内側に寄せる |
 
 `check_stickers.py stickers/<id>/`: 4県とも ERROR 0 / WARN 0。
 

@@ -42,6 +42,23 @@ def lake_rings(path, k):
     return [[[round(x * k, 6), round(-y, 6)] for x, y in chaikin(poly[0][:-1])] for poly in polys]
 
 
+def minus_lake(rings, lake):
+    """区・市町村の輪から湖をくり抜く。行政区域は湖の上まで含むので、そのままだと高島市などが湖ごと描かれる。
+    くり抜いた後、本体の 2% 未満のかけら（湖の岸に残る細い切れ端や沖島など）は捨てる。"""
+    from shapely.geometry import Polygon
+    from shapely.ops import unary_union
+    land = unary_union([Polygon(r).buffer(0) for r in rings if len(r) >= 3])
+    water = unary_union([Polygon(r).buffer(0) for r in lake])
+    rest = land.difference(water)
+    polys = list(rest.geoms) if hasattr(rest, "geoms") else [rest]
+    polys = [q for q in polys if not q.is_empty]
+    if not polys:
+        return rings
+    top = max(q.area for q in polys)
+    return [[[round(x, 6), round(y, 6)] for x, y in list(q.exterior.coords)[:-1]]
+            for q in sorted(polys, key=lambda q: -q.area) if q.area >= top * 0.02]
+
+
 def build(a, geo_dir, pref_dir):
     d = json.loads((pref_dir / f"N03-21_{a['pref']}_210101.json").read_text(encoding="utf-8"))
     every = sorted({ft["properties"]["N03_007"] for ft in d["features"] if ft["properties"]["N03_007"]})
@@ -70,6 +87,9 @@ def build(a, geo_dir, pref_dir):
     out["whole"] = [r for c in out["pref_map"] for r in out["pref_map"][c]]
     if a.get("lake"):
         out["lake"] = lake_rings(HERE / "data" / a["lake"], k)
+        # 市町のスタンプは湖の部分を切り取った陸だけの形にする（2026-10-18 ユーザー指示。湖を描くのは県くんと全体図だけ）
+        for u in units.values():
+            u["rings"] = minus_lake(u["rings"], out["lake"])
     path = HERE / "data" / f"machi24_{a['id']}.json"
     path.write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"{a['id']:<9} units {len(units):>2}  pref_map {len(out['pref_map'])}  → {path.relative_to(HERE)}")
