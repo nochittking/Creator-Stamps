@@ -15,15 +15,59 @@ import pathlib
 import re
 import sys
 
+import html
+
 import generate_city_series as cs
 from generate_city_series import face_spot, fit_shape, inside_any, ring_path
 from generate_osaka_24ku_v2 import (COLORS, FONT, FONT_LINK, H, INK, MAP_BOX, MARGIN, W, area, bbox, defs, face,
-                                    focus_lines, name_tag, text_block)
+                                    focus_lines, name_tag)
 from machi24_data import AREAS, PREF
 
 HERE = pathlib.Path(__file__).parent
 OUT = HERE / "build" / "machi24"
+# セリフの文字（2026-10-18 ユーザー指示: スタンプはパッと見のインパクト。イラストにかぶってよいので大きくそろえる）
+# 大阪の TEXT_BOX（横166px）だと5文字で33px、6文字で27pxまで縮んでいた。
+# 箱を右上の全体図の手前まで広げ、全セリフを同じ大きさにする。1行5文字（半角は0.55）まで
+TEXT_BOX = (MARGIN + 10, MARGIN + 8, MAP_BOX[0] - 4, H - MARGIN - 40)
+TEXT_SIZE = 45
 LAKE = "#3F9AD8"   # 琵琶湖の青。区・市町村の6色の青（#9CC8F0）と見分けられるよう濃くした（#7CC4EC では大津市で区別がつかなかった）
+
+
+def _w(line):
+    return sum(0.55 if ord(ch) < 128 else 1 for ch in line)
+
+
+def text_size(serif):
+    lines = serif.replace("！", "!").split("/")
+    x0, y0, x1, y1 = TEXT_BOX
+    return min(TEXT_SIZE, (x1 - x0) / max(_w(l) for l in lines), (y1 - y0) / len(lines) / 1.08)
+
+
+def text_rect(serif):
+    """セリフが占める範囲。顔はここをよける（形はかぶってよい）。"""
+    lines = serif.replace("！", "!").split("/")
+    size = text_size(serif)
+    x0, y0, _, _ = TEXT_BOX
+    return (x0 - 4, y0 - 4, x0 + max(_w(l) for l in lines) * size + 4, y0 + len(lines) * size * 1.08 + 4)
+
+
+def text_block(serif):
+    """大阪の text_block と同じ見た目（白フチの明朝）。大きさは全セリフで TEXT_SIZE にそろえる。"""
+    lines = serif.replace("！", "!").split("/")   # 全角「！」は斜めに見えるデザインなので半角に（大阪と同じ）
+    size = text_size(serif)
+    x0, y0, _, _ = TEXT_BOX
+    out, y = [], y0 + size * 0.92
+    for line in lines:
+        out.append(f'<text x="{x0}" y="{y:.1f}" font-size="{size:.1f}" font-family="{FONT}" font-weight="800" '
+                   f'fill="{INK}" stroke="#fff" stroke-width="{size * 0.26:.1f}" paint-order="stroke" '
+                   f'stroke-linejoin="round">{html.escape(line)}</text>')
+        y += size * 1.08
+    return "".join(out)
+
+
+# 形の置き方は大阪と同じ狭いセリフ範囲で決め（形はセリフにかぶってよい）、顔の位置だけ広げた範囲をよける。
+# 最初は両方とも広げた範囲でよけたが、形が小さく端へ追いやられ、滋賀県くんが画像の端に触れた
+NARROW_TEXT_RECT = cs.text_rect
 
 
 class Area:
@@ -114,7 +158,9 @@ class Area:
             parts = self.drop_holes([[tuple(p) for p in r] for r in self.geo["units"][code]["rings"]])
             kind = "city" if code in self.a["city_wards"] else "pref"
             highlight = [code]
+        cs.text_rect = NARROW_TEXT_RECT
         rings = fit_shape(parts, serif, whole)
+        cs.text_rect = text_rect
         # 湖を描くのは県くんだけ。市町は build_machi24_geo.py で湖をくり抜いた陸だけの形になっている
         lake = self.lake_path(self.mapper(parts, rings)) if whole else ""
         cx, cy, r = face_spot(rings, whole, serif)
@@ -194,7 +240,7 @@ class Area:
         oy = 3 + (68 - (y1 - y0) * s) / 2 - y0 * s
         q = [[(x * s + ox, y * s + oy) for x, y in r] for r in rs]
         d = ring_path(q)
-        fx, fy, _ = self.whole_face(rs, q)
+        fx, fy, _ = self.whole_face(rs, q, r=10)   # タブは小さいので寄せ幅も小さく（44 だと顔が形の外へ出た）
         return (f'<svg xmlns="http://www.w3.org/2000/svg" width="96" height="74" viewBox="0 0 96 74">'
                 f'<path d="{d}" fill="none" stroke="{INK}" stroke-width="5" stroke-linejoin="round"/>'
                 f'<path d="{d}" fill="{COLORS[0]}" stroke="{COLORS[0]}" stroke-width="1.2" stroke-linejoin="round"/>'
