@@ -50,7 +50,9 @@ AREAS = [
     ),
     dict(
         id="shiga", name="滋賀県", label="滋賀編", pref="25", dialect="近江弁",
-        city_wards=[], face_at=None, plate="滋賀県",
+        city_wards=[], plate="滋賀県",
+        lake="lake_biwa_naturalearth.json",   # 2026-10-18 ユーザー要望: 県くんと全体図に琵琶湖
+        face_at="25213",   # 東近江市。湖の上に顔を置くと琵琶湖が隠れる
         items=[
             (PREF, "琵琶湖の水/止めたろか！", "怒号", "からかわれたときの定番の言い返し"),
             ("25425", "相性/ええやん", "劇画スマイル", "愛荘町は「あいしょう」と読む"),

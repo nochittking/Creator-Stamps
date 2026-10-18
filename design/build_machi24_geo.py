@@ -8,6 +8,7 @@ build_kyoto24_geo.py を県ごとの設定（machi24_data.AREAS）で動くよ�
   whole:    県くんの形（pref_map の全市町村）
 
 入力は build_series_geo.py と同じ（国土数値情報 行政区域、CC BY 4.0）
+湖（滋賀の琵琶湖）は data/lake_biwa_naturalearth.json（Natural Earth 10m lakes、パブリックドメイン）
 使い方
   python3 build_machi24_geo.py --geo <dir> --pref <dir> [id ...]
 """
@@ -20,6 +21,25 @@ from build_series_geo import map_features, unit_rings
 from machi24_data import AREAS, PREF
 
 HERE = pathlib.Path(__file__).parent
+
+
+def chaikin(ring, n=2):
+    """角を丸める（各辺を 1/4・3/4 で切る）。Natural Earth の湖は点が少なく角ばるため。"""
+    for _ in range(n):
+        out = []
+        for i in range(len(ring)):
+            (x1, y1), (x2, y2) = ring[i], ring[(i + 1) % len(ring)]
+            out += [(x1 * .75 + x2 * .25, y1 * .75 + y2 * .25), (x1 * .25 + x2 * .75, y1 * .25 + y2 * .75)]
+        ring = out
+    return ring
+
+
+def lake_rings(path, k):
+    """湖の輪郭。国土数値情報の行政区域では湖の上もまわりの市町に分けて含まれていて湖が出ないので、
+    Natural Earth（パブリックドメイン）の湖を重ねる。滋賀の琵琶湖（2026-10-18 ユーザー要望）。"""
+    g = json.loads(path.read_text(encoding="utf-8"))["geometry"]
+    polys = [g["coordinates"]] if g["type"] == "Polygon" else g["coordinates"]
+    return [[[round(x * k, 6), round(-y, 6)] for x, y in chaikin(poly[0][:-1])] for poly in polys]
 
 
 def build(a, geo_dir, pref_dir):
@@ -48,6 +68,8 @@ def build(a, geo_dir, pref_dir):
     if a["city_wards"]:
         out["city_map"], out["city_bbox"], _ = map_features(one(a["city_wards"], "ward"), pref_dir, k)
     out["whole"] = [r for c in out["pref_map"] for r in out["pref_map"][c]]
+    if a.get("lake"):
+        out["lake"] = lake_rings(HERE / "data" / a["lake"], k)
     path = HERE / "data" / f"machi24_{a['id']}.json"
     path.write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"{a['id']:<9} units {len(units):>2}  pref_map {len(out['pref_map'])}  → {path.relative_to(HERE)}")
