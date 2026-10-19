@@ -1,7 +1,7 @@
 # わが街スタンプ 近畿（兵庫・滋賀・奈良・和歌山）— 調査と24個
 
 **調査日**: 2026-10-18
-**状態**: 試作（ユーザー確認待ち）。申請フォームの入力内容の下書きは [content/14](../content/14-kinki-machi24-registration.md)
+**状態**: 決定版（2026-10-19）。申請フォームの入力内容の下書きは [content/14](../content/14-kinki-machi24-registration.md)
 **生成**（shapely が要る: `pip install shapely`）: `cd design && python3 build_machi24_geo.py --geo <dir> --pref <dir> && python3 generate_machi24.py && node render_png.js build/machi24/<id> build/machi24_png/<id>`
 **セリフのデータ**: `design/machi24_data.py`
 **確認用ページ**: https://claude.ai/artifact/BE7aPkNryHboBF1xHLBrYz
