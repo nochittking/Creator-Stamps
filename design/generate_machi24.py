@@ -21,7 +21,10 @@ import generate_city_series as cs
 from generate_city_series import face_spot, fit_shape, inside_any, ring_path
 from generate_osaka_24ku_v2 import (COLORS, FONT, FONT_LINK, H, INK, MAP_BOX, MARGIN, W, area, bbox, defs, face,
                                     focus_lines, name_tag)
-from machi24_data import AREAS, PREF
+from machi24_data import AREAS as KINKI, PREF
+from national24_data import AREAS as NATIONAL   # 2026-10-30 全国編（build_national24_geo.py）
+
+AREAS = KINKI + NATIONAL
 
 HERE = pathlib.Path(__file__).parent
 OUT = HERE / "build" / "machi24"
@@ -84,7 +87,7 @@ class Area:
 
     def face_point(self, raw):
         """県くんの顔の位置（元の座標）。face_at の市町村の中心、なければ外接枠の真ん中。"""
-        at = self.a["face_at"]
+        at = self.geo.get("face_key") or self.a.get("face_at")
         if at:
             big = max(self.geo["pref_map"][at], key=area)
             return sum(x for x, _ in big) / len(big), sum(y for _, y in big) / len(big)
@@ -156,8 +159,10 @@ class Area:
             kind, highlight = "pref", list(self.geo["pref_map"])
         else:
             parts = self.drop_holes([[tuple(p) for p in r] for r in self.geo["units"][code]["rings"]])
-            kind = "city" if code in self.a["city_wards"] else "pref"
-            highlight = [code]
+            u = self.geo["units"][code]
+            # 全国編は地図の種類（県・どの政令市）と赤く塗るコードを units に持つ。近畿は city_wards で判定
+            kind = u.get("map") or ("city" if code in self.a.get("city_wards", []) else "pref")
+            highlight = u.get("codes", [code])
         cs.text_rect = NARROW_TEXT_RECT
         rings = fit_shape(parts, serif, whole)
         cs.text_rect = text_rect
@@ -197,9 +202,12 @@ class Area:
         oy = by0 + ((by1 - by0) - (y1 - y0) * s) / 2 - y0 * s
         col = {}
         for i, (code, *_) in enumerate(self.a["items"]):
-            if code != PREF and code not in col:
-                col[code] = COLORS[i % len(COLORS)]
+            if code == PREF:
+                continue
+            for c in self.geo["units"][code].get("codes", [code]):
+                col.setdefault(c, COLORS[i % len(COLORS)])
         rest = [c for c in feats if c not in col]
+        col = {c: v for c, v in col.items() if c in feats}
         for j, c in enumerate(rest):
             col[c] = COLORS[(j * 5 + 2) % len(COLORS)]
         paths = ""

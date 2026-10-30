@@ -21,6 +21,7 @@ LINEクリエイターズスタンプで **整備士向けニッチ / クリプ�
 | 10 | [全国30シリーズ 叩き台](docs/10-national-30-series.md) | **人口上位の都市・地域30シリーズ560個。** 選び方、地方別の一覧、PDCAで直したこと、要確認（[公開版](https://claude.ai/artifact/LFm322mU2MTQCdm7QebG83)） |
 | 11 | [わが街スタンプ 京都編](docs/11-kyoto-24.md) | **京都市11区＋府の6市＋京都府くんで24個。** シリーズのルール（1つの街で24個、区は全部1枚以上）、ネタの調査と線引き（[試作](https://claude.ai/artifact/REPXMQba6vH2FsCuHUczaA)） |
 | 12 | [わが街スタンプ 近畿4県](docs/12-kinki-machi24.md) | **兵庫・滋賀・奈良・和歌山を各24個。** 調査・線引き・作図で直したこと（[試作](https://claude.ai/artifact/BE7aPkNryHboBF1xHLBrYz)） |
+| 13 | [わが街スタンプ 全国編](docs/13-national-machi24.md) | **地方編8＋自治体編22、各24個で720個。** 過去の全国30シリーズをブラッシュアップ（[試作](https://claude.ai/artifact/WEDvaGU2v2LG88q86ZtxPy)） |
 
 ## 制作物
 
